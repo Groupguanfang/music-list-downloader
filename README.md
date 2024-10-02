@@ -8,17 +8,13 @@
 
 首先环境必须得有`node`和`npm`，或者`yarn` `pnpm`随便哪个。
 
-- 第一步：创建一个空目录，然后进入这个目录，运行:
+- 第一步：创建一个空目录，然后进入这个目录，再创建一个config目录，config目录下面创建`cookie.txt`，然后退回到上层目录再运行:
   ```bash
-  pnpm i music-list-downloader
-  ```
-- 第二步，运行：
-  ```bash
-  pnpm music-list-downloader 歌单id 下崽目录路径
+  pnpx music-list-downloader 歌单id 下崽目录路径
   ```
   例如：
   ```bash
-  pnpm music-list-downloader 3779629 ./config/music
+  pnpx music-list-downloader 3779629 ./config/music
   ```
   这样就会下载歌单id为3779629的歌单到`./config/music`目录下。
 
