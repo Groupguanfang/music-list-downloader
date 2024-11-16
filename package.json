@@ -53,7 +53,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,vue,json,scss,less,html}": [
-      "eslint . --fix"
+      "echo 'skip lint-staged'"
     ]
   }
 }

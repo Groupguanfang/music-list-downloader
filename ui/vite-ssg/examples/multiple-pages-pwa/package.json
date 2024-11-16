@@ -1,0 +1,23 @@
+{
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env DEBUG=vite-ssg:* vite",
+    "build": "cross-env DEBUG=vite-ssg:* vite-ssg build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.45"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "cross-env": "^7.0.3",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.0",
+    "vite-plugin-pages": "^0.27.1",
+    "vite-plugin-pwa": "^0.13.3",
+    "vite-plugin-vue-markdown": "^0.22.1",
+    "vite-ssg": "workspace:*",
+    "vue-router": "^4.1.6"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "extends": "@antfu",
+  "rules": {
+    "node/prefer-global/process": "off"
+  }
+}
