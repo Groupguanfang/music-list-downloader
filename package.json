@@ -1,7 +1,7 @@
 {
   "name": "music-list-downloader",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "packageManager": "pnpm@8.8.0",
   "author": "Zero <gczgroup@qq.com>",
   "exports": {

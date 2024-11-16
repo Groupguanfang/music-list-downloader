@@ -8,7 +8,7 @@ program
   .name('music-list-downloader')
   .helpOption('-h, --help', '输出命令的帮助信息')
   .description('从网易云音乐下载整个歌单的mp3到本地')
-  .version('0.0.1', '-v, --version', '输出当前版本号')
+  .version('0.0.2', '-v, --version', '输出当前版本号')
   .description('从网易云音乐下载整个歌单的mp3到本地')
   .command('download-list <listId> [downloadDir]')
   .option('-l, --level <level>', '控制日志的输出级别', 'silly')
