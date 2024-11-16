@@ -26,13 +26,13 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
-        run: npm install
+        run: npm i -g pnpm && pnpm install
 
       - name: Build app
-        run: npm -F ui run build
+        run: pnpm -F ui run build
 
       - name: Build Electron App
-        run: npm -F ui run build:${{ matrix.os == 'windows-latest' && 'win' || 'mac' }}
+        run: pnpm -F ui run build:${{ matrix.os == 'windows-latest' && 'win' || 'mac' }}
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
