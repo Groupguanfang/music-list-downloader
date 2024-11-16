@@ -38,4 +38,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: electron-app-${{ matrix.os }}
-          path: dist/
+          path: ui/release/
