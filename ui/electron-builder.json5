@@ -6,7 +6,7 @@
   "appId": "cc.naily.music-list-downloader-ui",
   "productName": "网易云歌单下崽器",
   "asar": true,
-  "icon": "public/favicon.svg",
+  "icon": "public/favicon.ico",
   "directories": {
     "output": "release/${version}"
   },
