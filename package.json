@@ -4,6 +4,15 @@
   "version": "0.0.1",
   "packageManager": "pnpm@8.8.0",
   "author": "Zero <gczgroup@qq.com>",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "bin": {
     "music-list-downloader": "./bin/bin.js"
   },
@@ -12,17 +21,19 @@
     "dist"
   ],
   "scripts": {
-    "dev": "tsup && node ./bin/bin.js download-list 12278637530",
+    "dev": "tsup && node ./bin/bin.js download-list 4930367030",
     "build": "tsup",
     "prepublishOnly": "tsup",
     "lint": "eslint . --fix",
     "prepare": "husky install",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "music-list-downloader": "node ./bin/bin.js"
   },
   "dependencies": {
     "NeteaseCloudMusicApi": "^4.22.0",
     "axios": "^1.7.7",
     "commander": "^12.1.0",
+    "sanitize-filename": "^1.6.3",
     "winston": "^3.14.2"
   },
   "devDependencies": {

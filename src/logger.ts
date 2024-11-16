@@ -1,8 +1,8 @@
 import { createLogger, format, transports } from 'winston'
 
-export function useLogger() {
+export function useLogger(level: string = 'silly') {
   const logger = createLogger({
-    level: 'debug',
+    level,
 
     transports: [
       new transports.File({
