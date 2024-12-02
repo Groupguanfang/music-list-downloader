@@ -34,11 +34,11 @@ jobs:
       - name: Build Electron App
         run: pnpm -F ui run build:${{ matrix.os == 'windows-latest' && 'win' || 'mac' }}
 
-      # - name: Upload Artifact
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: electron-app-${{ matrix.os }}
-      #     path: ui/release/
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: electron-app-${{ matrix.os }}
+          path: ui/release/
 
       - name: Read version from package.json
         id: get_version
