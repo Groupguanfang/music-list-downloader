@@ -1,17 +1,17 @@
-name: Build and Release Electron App
+name: Release
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'v*' # 在推送的标签以"v"开头时执行
 
 jobs:
-  build-macos:
-    name: Build macOS (arm64 and x64)
-    runs-on: macos-latest
+  build:
+    runs-on: ${{ matrix.os }} # 使用矩阵策略来确定操作系统
     strategy:
-      matrix:
-        arch: [arm64, x64] # 构建两种架构
+      matrix: # 这个定义会启用2个系统进行打包
+        os: [macos-latest, windows-latest]
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -19,77 +19,27 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18 # 替换为你的 Node.js 版本
-          cache: 'pnpm'
-
-      - name: Install pnpm
-        run: npm install -g pnpm
+          node-version: 18
 
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
 
-      - name: Build the app
-        run: pnpm -F ui build
+      - name: Build Electron package
+        # 不同系统会对应打包出不同类型安装包，打包完成会自动生成 Releases 草稿
+        run: npm run build
         env:
-          ELECTRON_BUILD_ARCH: ${{ matrix.arch }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Archive build artifacts
-        run: mkdir -p dist && mv ./ui/release/*.dmg ./dist/
-
-      - name: Upload to GitHub Release
-        uses: actions/upload-release-asset@v1
-        with:
-          repo: ${{ github.repository }}
-          release_id: ${{ steps.create_release.outputs.id }}
-          asset_path: ./dist/*.dmg
-          asset_name: ${{ matrix.arch }}-${{ github.ref_name }}.dmg
-          content_type: application/octet-stream
-
-  build-windows:
-    name: Build Windows
-    runs-on: windows-latest
+  release:
+    needs: build
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18 # 替换为你的 Node.js 版本
-          cache: 'pnpm'
-
-      - name: Install pnpm
-        run: npm install -g pnpm
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build the app
-        run: pnpm -F ui build
-
-      - name: Archive build artifacts
-        run: mkdir -p dist && move ./ui/release/*.exe ./dist/
-
-      - name: Upload to GitHub Release
-        uses: actions/upload-release-asset@v1
-        with:
-          repo: ${{ github.repository }}
-          release_id: ${{ steps.create_release.outputs.id }}
-          asset_path: ./dist/*.exe
-          asset_name: windows-${{ github.ref_name }}.exe
-          content_type: application/octet-stream
-
-  create_release:
-    name: Create GitHub Release
-    runs-on: ubuntu-latest
-    outputs:
-      id: ${{ steps.create_release.outputs.id }}
-    steps:
-      - name: Create a release
-        id: create_release
-        uses: actions/create-release@v1
-        with:
-          tag_name: ${{ github.ref_name }}
-          release_name: Release ${{ github.ref_name }}
-          draft: false
-          prerelease: false
+      - name: Publish release
+        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+        # 编辑 Releases 草稿并发布
+        run: gh release edit ${{ github.ref_name }} --draft=false
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
