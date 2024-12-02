@@ -2,8 +2,8 @@ name: Release
 
 on:
   push:
-    tags:
-      - 'v*' # 在推送的标签以"v"开头时执行
+    branches:
+      - main
 
 jobs:
   build:
