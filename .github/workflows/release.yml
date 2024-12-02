@@ -34,8 +34,8 @@ jobs:
       - name: Build Electron App
         run: pnpm -F ui run build:${{ matrix.os == 'windows-latest' && 'win' || 'mac' }}
 
-      - name: "Debug: List release directory"
-        run: ls -al ui/release/
+      # - name: "Debug: List release directory"
+      #   run: node -e "console.log(require('fs').readdirSync('ui/release'))"
 
       - name: Read version from package.json
         id: get_version
