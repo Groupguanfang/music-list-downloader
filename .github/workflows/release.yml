@@ -34,15 +34,17 @@ jobs:
       - name: Build Electron App
         run: pnpm -F ui run build:${{ matrix.os == 'windows-latest' && 'win' || 'mac' }}
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: electron-app-${{ matrix.os }}
-          path: ui/release/
+      # - name: Upload Artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: electron-app-${{ matrix.os }}
+      #     path: ui/release/
 
       - name: Read version from package.json
         id: get_version
-        run: echo "VERSION=$(node -p \"require('./package.json').version\")" >> $GITHUB_ENV
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Create Release
         if: ${{ github.event_name == 'push' }}
