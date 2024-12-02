@@ -42,6 +42,7 @@ jobs:
         run: |
           VERSION=$(node -p "require('./package.json').version")
           echo "VERSION=$VERSION" >> $GITHUB_ENV
+        shell: bash
 
       - name: Create Release
         if: ${{ github.event_name == 'push' }}
@@ -61,11 +62,13 @@ jobs:
         run: |
           DMG_FILE=$(find ui/release/ -name "*.dmg" | head -n 1)
           echo "DMG_FILE=$DMG_FILE" >> $GITHUB_ENV
+        shell: bash
         
       - name: Find .exe file
         run: |
           EXE_FILE=$(find ui/release/ -name "*.exe" | head -n 1)
           echo "EXE_FILE=$EXE_FILE" >> $GITHUB_ENV
+        shell: bash
 
       - name: Upload macOS Release Asset (.dmg)
         if: ${{ matrix.os == 'macos-latest' && github.event_name == 'push' }}
