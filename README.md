@@ -8,7 +8,7 @@
 
 不会tauri, 只会electron, 所以只有electron版本。（欢迎PR
 
-- 前往release下载安装对应版本即可。
+- 前往[release]()下载安装对应版本即可。
 
 ## 命令行使用
 
