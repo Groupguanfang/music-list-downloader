@@ -1,0 +1,31 @@
+{
+  "name": "netease-music-list-downloader",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "TypeScript API protocol for netease music list downloader",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./dist/*": "./dist/*"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "unbuilder && rimraf dist/.cache"
+  },
+  "unbuilder": {
+    "config": [
+      {
+        "builder": "common",
+        "entryExtractor": "."
+      },
+      "vite-lib-mode",
+      "bundle-dts-generator"
+    ]
+  },
+  "dependencies": {}
+}
