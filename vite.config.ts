@@ -7,6 +7,7 @@ import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { buildServer, defaultSwcOptions, swc } from 'unplugin-rpc'
 import NailyRpc from 'unplugin-rpc/vite'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import VueMacros from 'unplugin-vue-macros/vite'
 import Markdown from 'unplugin-vue-markdown/vite'
@@ -86,6 +87,7 @@ export default defineConfig({
       dirs: [
         './frontend/composables',
         './frontend/stores',
+        './frontend/directives',
       ],
       vueTemplate: true,
     }),
@@ -100,6 +102,7 @@ export default defineConfig({
       dirs: [
         './frontend/components',
       ],
+      resolvers: [NaiveUiResolver()],
     }),
 
     // https://github.com/antfu/unocss

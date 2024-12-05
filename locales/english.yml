@@ -1,0 +1,10 @@
+popular-music-list: Popular List
+nav:
+  home: Home
+  personal: Personal
+  setting: Setting
+  switch-language: Switch Language
+  switch-theme: Switch Theme
+  music-player: Music Player
+my:
+  music-list: My Music List

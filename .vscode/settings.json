@@ -1,21 +1,29 @@
 {
   "cSpell.words": [
+    "alia",
     "antfu",
     "buildin",
+    "Coverable",
     "demi",
+    "Describeable",
     "dicom",
     "iconify",
+    "Idable",
     "intlify",
     "Naily",
     "nailyjs",
     "netease",
     "nprogress",
+    "Offsetable",
+    "Paginationable",
     "pinia",
     "pnpm",
+    "qrimg",
     "sizecheck",
     "taze",
     "typecheck",
     "typeorm",
+    "unikey",
     "unocss",
     "unplugin",
     "Vite",
@@ -68,5 +76,8 @@
     "json",
     "jsonc",
     "yaml"
-  ]
+  ],
+
+  "css.validate": false,
+  "less.validate": false
 }

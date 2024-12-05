@@ -25,6 +25,7 @@ function setI18nLanguage(lang: Locale) {
   i18n.global.locale.value = lang as any
   if (typeof document !== 'undefined')
     document.querySelector('html')?.setAttribute('lang', lang)
+  globalThis?.localStorage?.setItem('__naily:music-downloader-locale__', lang)
   return lang
 }
 
@@ -46,5 +47,5 @@ export async function loadLanguageAsync(lang: string): Promise<Locale> {
 
 export const install: UserModule = ({ app }) => {
   app.use(i18n)
-  loadLanguageAsync('en')
+  loadLanguageAsync(globalThis?.localStorage?.getItem('__naily:music-downloader-locale__') || 'zh-CN')
 }

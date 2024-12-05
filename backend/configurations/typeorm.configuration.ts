@@ -12,7 +12,6 @@ export class TypeOrmConfiguration implements CustomDataSource {
     return {
       ...oldOptions,
       logging: true,
-      synchronize: true,
     }
   }
 }

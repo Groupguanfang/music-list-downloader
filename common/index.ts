@@ -1,1 +1,1 @@
-export * from './welcome.protocol'
+export * from './music.protocol'

@@ -27,5 +27,7 @@
       "bundle-dts-generator"
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "NeteaseCloudMusicApi": "^4.25.0"
+  }
 }

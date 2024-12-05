@@ -7,8 +7,18 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    DefaultHeader: typeof import('./components/default-header.vue')['default']
+    NConfigProvider: typeof import('naive-ui')['NConfigProvider']
+    NDivider: typeof import('naive-ui')['NDivider']
+    NImage: typeof import('naive-ui')['NImage']
+    NSkeleton: typeof import('naive-ui')['NSkeleton']
+    NTooltip: typeof import('naive-ui')['NTooltip']
+    PCOperationLayer: typeof import('./components/PCOperationLayer.vue')['default']
+    PlayerBar: typeof import('./components/player-bar.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SkeletonImage: typeof import('./components/skeleton-image.vue')['default']
+    SongListCard: typeof import('./components/song-list-card.vue')['default']
   }
 }

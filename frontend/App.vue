@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { darkTheme } from 'naive-ui'
+
 // https://github.com/vueuse/head
 // you can use this to manipulate the document head in any components,
 // they will be rendered correctly in the html results with vite-ssg
 useHead({
-  title: 'Vitesse',
+  title: '网易云音乐下崽器',
   meta: [
     {
       name: 'description',
@@ -25,5 +27,7 @@ useHead({
 </script>
 
 <template>
-  <RouterView />
+  <NConfigProvider :theme="isDark ? darkTheme : null">
+    <RouterView />
+  </NConfigProvider>
 </template>
