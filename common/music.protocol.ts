@@ -42,12 +42,19 @@ export interface UserSongListsResponse {
   songLists: SongList[]
 }
 export interface UserSongListsRequest extends RequestBase, Idable {}
+export interface SongDetailRequest extends RequestBase, Idable {
+  useInternalCookieIfExist?: boolean
+}
+export interface SongDetailResponse extends Song {
+  url: string
+}
 export interface MusicController {
   readonly user: IUserService
 
   getPersonalizedSongLists(request?: PersonalizedSongListRequest): Promise<PersonalizedSongListResponse>
   getSongListDetail(request?: SongListDetailRequest): Promise<SongListDetailResponse>
   getUserSongLists(request: UserSongListsRequest): Promise<UserSongListsResponse>
+  getSongDetail(request: SongDetailRequest): Promise<SongDetailResponse>
 }
 export interface IUserService {
   createQrCode(): Promise<CreateQrCodeResponse>

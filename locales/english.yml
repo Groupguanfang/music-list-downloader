@@ -1,4 +1,8 @@
 popular-music-list: Popular List
+common:
+  switch:
+    on: On
+    off: Off
 nav:
   home: Home
   personal: Personal
@@ -8,3 +12,6 @@ nav:
   music-player: Music Player
 my:
   music-list: My Music List
+setting:
+  useInternalDownloadCookie: Use internal download cookie
+  useInternalDownloadCookieDesc: If the website administrator has configured the built-in cookie and this switch is turned on, the built-in cookie will be used to download music when downloading music.

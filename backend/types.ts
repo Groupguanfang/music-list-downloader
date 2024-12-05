@@ -1,5 +1,5 @@
 export interface AppConfiguration {
-  // Custom your configuration
+  internalCookie?: string
 }
 
 declare global {

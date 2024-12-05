@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { darkTheme } from 'naive-ui'
+import themeOverrides from './styles/theme-overrides'
 
 // https://github.com/vueuse/head
 // you can use this to manipulate the document head in any components,
@@ -27,7 +28,7 @@ useHead({
 </script>
 
 <template>
-  <NConfigProvider :theme="isDark ? darkTheme : null">
+  <NConfigProvider :theme-overrides="themeOverrides" :theme="isDark ? darkTheme : null">
     <RouterView />
   </NConfigProvider>
 </template>

@@ -1,4 +1,8 @@
 popular-music-list: 热门歌单
+common:
+  switch:
+    on: 开
+    off: 关
 nav:
   home: 主页
   personal: 我的
@@ -8,3 +12,6 @@ nav:
   music-player: 进入播放器
 my:
   music-list: 我的歌单
+setting:
+  useInternalDownloadCookie: 是否使用网站内置cookie下载音乐
+  useInternalDownloadCookieDesc: 如果网站管理员配置了内置的cookie，并且此开关为开启状态，则下载音乐时会使用该内置cookie下载音乐。

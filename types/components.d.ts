@@ -8,10 +8,12 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     DefaultHeader: typeof import('./components/default-header.vue')['default']
+    FormLabel: typeof import('./components/form-label.vue')['default']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NDivider: typeof import('naive-ui')['NDivider']
     NImage: typeof import('naive-ui')['NImage']
     NSkeleton: typeof import('naive-ui')['NSkeleton']
+    NSwitch: typeof import('naive-ui')['NSwitch']
     NTooltip: typeof import('naive-ui')['NTooltip']
     PCOperationLayer: typeof import('./components/PCOperationLayer.vue')['default']
     PlayerBar: typeof import('./components/player-bar.vue')['default']

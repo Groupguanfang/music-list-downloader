@@ -35,5 +35,10 @@ export default defineConfig({
     transformerDirectives(),
     transformerVariantGroup(),
   ],
+  content: {
+    pipeline: {
+      include: [/\.(vue|svelte|ts|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/],
+    },
+  },
   safelist: 'prose prose-sm m-auto text-left'.split(' '),
 })

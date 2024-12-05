@@ -60,7 +60,7 @@ export default defineConfig({
     // https://github.com/posva/unplugin-vue-router
     VueRouter({
       extensions: ['.vue', '.md'],
-      dts: './frontend/typed-router.d.ts',
+      dts: './types/typed-router.d.ts',
       routesFolder: './frontend/pages',
     }),
 
@@ -81,9 +81,11 @@ export default defineConfig({
         {
           // add any other imports you were relying on
           'vue-router/auto': ['useLink'],
+          '@nailyjs/rpc': ['RpcController'],
+          '@nailyjs/config': ['Value'],
         },
       ],
-      dts: './frontend/auto-imports.d.ts',
+      dts: './types/auto-imports.d.ts',
       dirs: [
         './frontend/composables',
         './frontend/stores',
@@ -98,7 +100,7 @@ export default defineConfig({
       extensions: ['vue', 'md'],
       // allow auto import and register components used in markdown
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
-      dts: './frontend/components.d.ts',
+      dts: './types/components.d.ts',
       dirs: [
         './frontend/components',
       ],

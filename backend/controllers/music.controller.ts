@@ -1,11 +1,14 @@
-import { MusicController, PersonalizedSongListRequest, PersonalizedSongListResponse, SongListDetailRequest, SongListDetailResponse, UserSongListsRequest, UserSongListsResponse } from '#/music.protocol'
+import { MusicController, PersonalizedSongListRequest, PersonalizedSongListResponse, SongDetailRequest, SongDetailResponse, SongListDetailRequest, SongListDetailResponse, UserSongListsRequest, UserSongListsResponse } from '#/music.protocol'
 import { UserService } from '@/services/user.service'
-import { RpcController } from '@nailyjs/rpc'
 import Netease from 'NeteaseCloudMusicApi'
 
 @RpcController(MusicController)
 export class MusicControllerImpl implements MusicController {
-  constructor(public readonly user: UserService) {}
+  constructor(
+    public readonly user: UserService,
+    @Value('naily.app.internalCookie')
+    private readonly internalCookie: string,
+  ) {}
 
   async getPersonalizedSongLists(request?: PersonalizedSongListRequest): Promise<PersonalizedSongListResponse> {
     const response = await Netease.personalized({
@@ -69,6 +72,37 @@ export class MusicControllerImpl implements MusicController {
         id: item.id,
         name: item.name,
         cover: item.coverImgUrl,
+      })),
+    }
+  }
+
+  async getSongDetail(request: SongDetailRequest): Promise<SongDetailResponse> {
+    const cookie = computed(() => this.internalCookie || request.cookie)
+
+    const [detailResponse, urlResponse] = await Promise.all([
+      Netease.song_detail({
+        ids: request.id as string,
+        cookie: request.useInternalCookieIfExist === true ? cookie.value : request.cookie,
+      }),
+      Netease.song_url({
+        id: request.id,
+        cookie: request.useInternalCookieIfExist === true ? cookie.value : request.cookie,
+      }),
+    ])
+
+    const detailData = detailResponse.body.songs[0] as any
+    const urlData = (urlResponse.body.data as any)[0] as any
+
+    return {
+      id: detailData.id,
+      name: detailData.name,
+      cover: detailData.al.picUrl,
+      url: urlData.url,
+      subTitle: (detailData.alia || [])[0] || null,
+      alias: detailData.alia || [],
+      artists: (detailData.ar || []).map((artist: any) => ({
+        id: artist.id,
+        name: artist.name,
       })),
     }
   }
