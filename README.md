@@ -21,3 +21,8 @@
 ## 说明
 
 - 本工具仅供学习交流使用，不得用于商业用途。
+
+## License & Author
+
+- Author: [Naily Zero](https://github.com/Groupguanfang)
+- License: [MIT](./LICENSE)
