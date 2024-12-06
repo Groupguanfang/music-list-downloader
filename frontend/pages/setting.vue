@@ -8,7 +8,10 @@ const settingStore = useSettingStore()
 </script>
 
 <template>
-  <div pt-10 min-h-screen flex="~ col gap-3">
+  <div min-h-screen flex="~ col gap-3">
+    <h1 font-size-10 font-bold>
+      {{ $t('setting.title') }}
+    </h1>
     <section>
       <FormLabel mb4 :label="$t('setting.server-manager')" :description="$t('setting.server-manager-desc')" />
       <NDynamicInput v-model:value="settingStore.serverBackends" class="server-dynamic-input" @create="() => ({ name: '', url: '' })">

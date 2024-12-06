@@ -69,19 +69,34 @@ function removeServerBackend(index: number) {
   <div flex="~ col md:row justify-between md:items-center" my-3>
     <div flex="~ wrap gap-2 md:gap-3">
       <button class="action-btn" @click="create(index)">
-        {{ $t('setting.server-manager-action.add') }}
+        <div i-ph-plus />
+        <div hidden md:block>
+          {{ $t('setting.server-manager-action.add') }}
+        </div>
       </button>
       <button class="action-btn" @click="removeServerBackend(index)">
-        {{ $t('setting.server-manager-action.delete') }}
+        <div i-ph-trash-duotone />
+        <div hidden md:block>
+          {{ $t('setting.server-manager-action.delete') }}
+        </div>
       </button>
       <button class="action-btn" @click="move('up', index)">
-        {{ $t('setting.server-manager-action.up') }}
+        <div i-ph-arrow-up-duotone />
+        <div hidden md:block>
+          {{ $t('setting.server-manager-action.up') }}
+        </div>
       </button>
       <button class="action-btn" @click="move('down', index)">
-        {{ $t('setting.server-manager-action.down') }}
+        <div i-ph-arrow-down-duotone />
+        <div hidden md:block>
+          {{ $t('setting.server-manager-action.down') }}
+        </div>
       </button>
       <button class="action-btn" @click="setCurrentServerBackend(index)">
-        {{ $t('setting.server-manager-action.set') }}
+        <div i-ph-check-duotone />
+        <div hidden md:block>
+          {{ $t('setting.server-manager-action.set') }}
+        </div>
       </button>
     </div>
 
@@ -100,6 +115,6 @@ function removeServerBackend(index: number) {
 
 <style lang="less" scoped>
 .action-btn {
-  @apply hover:scale-105 active:scale-95 transition-all text-nowrap btn bg-red-5 color-white;
+  @apply btn p3 md:px-5 md:py-2 flex! items-center gap-1 hover:scale-105 active:scale-95 transition-all text-nowrap bg-red-5 color-white;
 }
 </style>

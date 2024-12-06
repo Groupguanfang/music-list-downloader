@@ -1,50 +1,51 @@
 common:
-  no-login: 未登录 请先登录
   login-expired: 登录已过期，请重新登录
+  no-login: 未登录 请先登录
   switch:
-    on: 开
     off: 关
-nav:
-  home: 主页
-  personal: 我的
-  setting: 设置
-  switch-language: 切换语言
-  switch-theme: 切换主题
-  music-player: 进入播放器
+    on: 开
 home:
   popular-music-list: 热门歌单
   top-artists: 热门歌手
 my:
   music-list: 我的歌单
+nav:
+  home: 主页
+  music-player: 进入播放器
+  personal: 我的
+  setting: 设置
+  switch-language: 切换语言
+  switch-theme: 切换主题
+play-list-detail:
+  download-all: 下载
+  item-action:
+    download: 下载
+    play: 播放
+    push-to-play-list: 添加到播放列表
+  replace-current-play-list: 播放全部
 setting:
-  use-internal-download-cookie: 是否使用网站内置cookie下载音乐
-  use-internal-download-cookie-desc: 如果网站管理员配置了内置的cookie，并且此开关为开启状态，则下载音乐时会使用该内置cookie下载音乐。
-  server-manager: 服务器管理
-  server-manager-desc: 管理服务器配置。服务器配置保存在您的浏览器中，服务端不会保存您的服务器配置。
-  used-server: 已使用当前服务器
   checking-server: 正在检查服务器是否可用...
-  server-manager-message:
-    no-exist: 服务器不存在
-    address-empty: 服务器地址不能为空
-    name-empty: 服务器名称不能为空
-    connected: 已连接到服务器, 版本号:{version}
-  server-manager-input:
-    name-placeholder: 请输入服务器名称
-    url-placeholder: 请输入服务器地址
+  server-manager: 服务器管理
   server-manager-action:
     add: 添加服务器
     delete: 删除服务器
+    down: 下移
     set: 使用该服务器
     up: 上移
-    down: 下移
-  switch-theme: 切换主题模式
-  switch-theme-desc: 切换主题模式。
+  server-manager-desc: 管理服务器配置。服务器配置保存在您的浏览器中，服务端不会保存您的服务器配置。
+  server-manager-input:
+    name-placeholder: 请输入服务器名称
+    url-placeholder: 请输入服务器地址
+  server-manager-message:
+    address-empty: 服务器地址不能为空
+    connected: 已连接到服务器, 版本号:{version}
+    name-empty: 服务器名称不能为空
+    no-exist: 服务器不存在
   switch-language: 切换语言
   switch-language-desc: 切换语言。
-play-list-detail:
-  replace-current-play-list: 播放全部
-  download-all: 下载
-  item-action:
-    play: 播放
-    push-to-play-list: 添加到播放列表
-    download: 下载
+  switch-theme: 切换主题模式
+  switch-theme-desc: 切换主题模式。
+  title: 设置
+  use-internal-download-cookie: 是否使用网站内置cookie下载音乐
+  use-internal-download-cookie-desc: 如果网站管理员配置了内置的cookie，并且此开关为开启状态，则下载音乐时会使用该内置cookie下载音乐。
+  used-server: 已使用当前服务器

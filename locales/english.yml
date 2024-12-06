@@ -1,50 +1,56 @@
 common:
-  no-login: Not logged in, please login first
   login-expired: Login expired, please login again
+  no-login: Not logged in, please login first
   switch:
-    on: On
     off: Off
-nav:
-  home: Home
-  personal: Personal
-  setting: Setting
-  switch-language: Switch Language
-  switch-theme: Switch Theme
-  music-player: Music Player
+    on: On
 home:
   popular-music-list: Popular Music List
   top-artists: Top Artists
 my:
   music-list: My Music List
+nav:
+  home: Home
+  music-player: Music Player
+  personal: Personal
+  setting: Setting
+  switch-language: Switch Language
+  switch-theme: Switch Theme
+play-list-detail:
+  download-all: Download
+  item-action:
+    download: Download
+    play: Play
+    push-to-play-list: Push to playlist
+  replace-current-play-list: Replace the current playlist
 setting:
-  use-internal-download-cookie: Use internal download cookie
-  use-internal-download-cookie-desc: If the website administrator has configured the built-in cookie and this switch is turned on, the built-in cookie will be used to download music when downloading music.
-  server-manager: Server Manager
-  server-manager-desc: Manage server configuration. Server configuration is saved in your browser and the server does not save your server configuration.
-  used-server: Used current server
   checking-server: Checking if the server is available...
-  server-manager-message:
-    no-exist: Server does not exist
-    address-empty: Server address cannot be empty
-    name-empty: Server name cannot be empty
-    connected: Connected to the server, version {version}
-  server-manager-input:
-    name-placeholder: Please enter the server name
-    url-placeholder: Please enter the server address
+  server-manager: Server Manager
   server-manager-action:
     add: Add Server
     delete: Delete Server
+    down: Move down
     set: Use this server
     up: Move up
-    down: Move down
-  switch-theme: Switch Theme Mode
-  switch-theme-desc: Switch theme mode.
+  server-manager-desc: >-
+    Manage server configuration. Server configuration is saved in your browser
+    and the server does not save your server configuration.
+  server-manager-input:
+    name-placeholder: Please enter the server name
+    url-placeholder: Please enter the server address
+  server-manager-message:
+    address-empty: Server address cannot be empty
+    connected: Connected to the server, version {version}
+    name-empty: Server name cannot be empty
+    no-exist: Server does not exist
   switch-language: Switch Language
   switch-language-desc: Switch language.
-play-list-detail:
-  replace-current-play-list: Replace the current playlist
-  download-all: Download
-  item-action:
-    play: Play
-    push-to-play-list: Push to playlist
-    download: Download
+  switch-theme: Switch Theme Mode
+  switch-theme-desc: Switch theme mode.
+  title: Settings
+  use-internal-download-cookie: Use internal download cookie
+  use-internal-download-cookie-desc: >-
+    If the website administrator has configured the built-in cookie and this
+    switch is turned on, the built-in cookie will be used to download music when
+    downloading music.
+  used-server: Used current server
