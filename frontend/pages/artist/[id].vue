@@ -2,8 +2,6 @@
 import { ArtistDetailResponse } from '#/music.protocol'
 import { useMusicController } from '~/apis/music'
 
-defineOptions({ name: 'ArtistDetail' })
-
 const route = useRoute()
 const { id } = route.params as { id: string }
 
@@ -17,6 +15,10 @@ const dataNumFields = computed(() => [
   { num: artistDetail.value.albumCount, label: '专辑数' },
   { num: artistDetail.value.singleSongCount, label: '单曲数' },
 ])
+</script>
+
+<script lang="tsx">
+export default { name: 'ArtistDetail' }
 </script>
 
 <template>

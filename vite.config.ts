@@ -1,4 +1,5 @@
 import path from 'node:path'
+import { setup } from '@css-render/vue3-ssr'
 import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 import Shiki from '@shikijs/markdown-it'
 import Vue from '@vitejs/plugin-vue'
@@ -197,8 +198,6 @@ export default defineConfig({
       generateSitemap({ outDir: './dist/frontend' })
     },
     async onBeforePageRender(_, __, appCtx) {
-      // eslint-disable-next-line ts/ban-ts-comment
-      // @ts-expect-error
       const { collect } = setup(appCtx.app)
       ;(appCtx as any).__collectStyle = collect
       return undefined
