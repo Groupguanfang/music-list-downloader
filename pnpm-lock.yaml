@@ -11,6 +11,9 @@ importers:
 
   .:
     dependencies:
+      '@naiable/utils':
+        specifier: ^0.0.6
+        version: 0.0.6
       '@nailyjs/typeorm':
         specifier: ^2.0.20
         version: 2.0.20(sqlite3@5.1.7)
@@ -1810,6 +1813,9 @@ packages:
 
   '@mdit-vue/types@2.1.0':
     resolution: {integrity: sha512-TMBB/BQWVvwtpBdWD75rkZx4ZphQ6MN0O4QB2Bc0oI5PC2uE57QerhNxdRZ7cvBHE2iY2C+BUNUziCfJbjIRRA==}
+
+  '@naiable/utils@0.0.6':
+    resolution: {integrity: sha512-nOTQKgpZNvvIPdXcF9XWxjE6xVwHnyZ82IyxVjN0bsqXfjJ6/gYHvLQCdhcX0g11nMYyCFr9Pl3TqABhaBzTbA==}
 
   '@nailyjs/backend@2.0.7':
     resolution: {integrity: sha512-ixTne1ve3ymFoxo/L+9JiDlYDugqi/pT9zDsDBI9JKipJVIJvPgHghirVfe7R/bYgZBL95QhdJRDgsXbmVflcQ==}
@@ -9905,6 +9911,8 @@ snapshots:
       markdown-it: 14.1.0
 
   '@mdit-vue/types@2.1.0': {}
+
+  '@naiable/utils@0.0.6': {}
 
   '@nailyjs/backend@2.0.7':
     dependencies:
