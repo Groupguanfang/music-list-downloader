@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ArtistCard: typeof import('./../frontend/components/artist-card.vue')['default']
     DefaultHeader: typeof import('./../frontend/components/default-header.vue')['default']
     FormLabel: typeof import('./../frontend/components/form-label.vue')['default']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']

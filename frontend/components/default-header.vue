@@ -3,6 +3,7 @@ import { RouteNamedMap } from 'vue-router/auto-routes'
 
 const { t } = useI18n()
 const { y } = useWindowScroll()
+const { width: windowWidth } = useWindowSize()
 const { toggleLocales } = useToggleLocale()
 const route = useRoute()
 
@@ -42,7 +43,7 @@ const rightButton = computed(() => [
 </script>
 
 <template>
-  <header :class="`${y > 50 ? 'bg-white/80 dark:bg-black/80' : ''} fixed-header`">
+  <header v-if="windowWidth >= 768" :class="`${y > 50 ? 'bg-white/80 dark:bg-black/80' : ''} fixed-header`">
     <nav flex="~ items-center justify-center gap-2">
       <button
         v-for="(item, index) in nav" :key="index" transition-all btn p3 font-size-4 scale="active:95 hover:101"

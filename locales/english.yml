@@ -1,4 +1,3 @@
-popular-music-list: Popular List
 common:
   no-login: Not logged in, please login first
   login-expired: Login expired, please login again
@@ -12,6 +11,9 @@ nav:
   switch-language: Switch Language
   switch-theme: Switch Theme
   music-player: Music Player
+home:
+  popular-music-list: Popular Music List
+  top-artists: Top Artists
 my:
   music-list: My Music List
 setting:

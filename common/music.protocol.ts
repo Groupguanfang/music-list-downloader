@@ -1,4 +1,4 @@
-import type { Aliasable, Coverable, Describeable, Idable, Limitable, Nameable, RequestBase } from './types'
+import type { Aliasable, Coverable, Describeable, Idable, Limitable, Nameable, Paginationable, RequestBase } from './types'
 
 export const MusicController = 'MusicController'
 
@@ -57,10 +57,18 @@ export interface ArtistDetailResponse extends Artist, Aliasable {
 export interface VersionResponse {
   version: string
 }
+export interface PersonalizedArtistsRequest extends RequestBase, Paginationable {}
+export interface PersonalizedArtistsResponseResult extends Artist {
+  avatar: string
+}
+export interface PersonalizedArtistsResponse {
+  result: PersonalizedArtistsResponseResult[]
+}
 export interface MusicController {
   readonly user: IUserService
 
   getPersonalizedSongLists(request?: PersonalizedSongListRequest): Promise<PersonalizedSongListResponse>
+  getPersonalizedArtists(request?: PersonalizedArtistsRequest): Promise<PersonalizedArtistsResponse>
   getSongListDetail(request?: SongListDetailRequest): Promise<SongListDetailResponse>
   getUserSongLists(request: UserSongListsRequest): Promise<UserSongListsResponse>
   getSongDetail(request: SongDetailRequest): Promise<SongDetailResponse>

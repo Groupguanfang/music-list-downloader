@@ -9,7 +9,7 @@
           leave-active-class="transition ease-in-out duration-200"
           leave-to-class="opacity-0"
         >
-          <KeepAlive :exclude="[/Detail$/]">
+          <KeepAlive :exclude="[/Detail$/, 'My']">
             <component :is="Component" />
           </KeepAlive>
         </Transition>

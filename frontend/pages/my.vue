@@ -3,8 +3,8 @@ import { CurrentAccountResponse, UserSongListsResponse } from '#/music.protocol'
 import { useMessage } from 'naive-ui'
 import { useMusicController } from '~/apis/music'
 
-const router = useRouter()
 const { t } = useI18n()
+const router = useRouter()
 const message = useMessage()
 const musicController = useMusicController()
 const cookie = useLocalStorage('__naily:music-downloader-cookie__', '')
@@ -35,6 +35,10 @@ if (cookie.value)
   requestAccountInfo()
 
 const avatarIsLoaded = ref(false)
+</script>
+
+<script lang="tsx">
+export default { name: 'My' }
 </script>
 
 <template>

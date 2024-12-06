@@ -1,4 +1,3 @@
-popular-music-list: 热门歌单
 common:
   no-login: 未登录 请先登录
   login-expired: 登录已过期，请重新登录
@@ -12,6 +11,9 @@ nav:
   switch-language: 切换语言
   switch-theme: 切换主题
   music-player: 进入播放器
+home:
+  popular-music-list: 热门歌单
+  top-artists: 热门歌手
 my:
   music-list: 我的歌单
 setting:

@@ -1,8 +1,11 @@
+import fs from 'node:fs'
 import path from 'node:path'
 import { setup } from '@css-render/vue3-ssr'
 import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 import Shiki from '@shikijs/markdown-it'
 import Vue from '@vitejs/plugin-vue'
+import { load } from 'js-yaml'
+import { get } from 'lodash-es'
 import LinkAttributes from 'markdown-it-link-attributes'
 import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -20,6 +23,10 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 import Layouts from 'vite-plugin-vue-layouts'
 import WebfontDownload from 'vite-plugin-webfont-dl'
 import generateSitemap from 'vite-ssg-sitemap'
+
+const config = load(
+  fs.existsSync(path.resolve('config.yml')) ? fs.readFileSync(path.resolve('config.yml'), 'utf-8') : '',
+)
 
 export default defineConfig({
   resolve: {
@@ -42,6 +49,10 @@ export default defineConfig({
     NailyRpc({
       build: {
         on: false,
+      },
+
+      preview: {
+        baseURL: get(config, 'internalServer.baseURL', '/_api'),
       },
     }),
 
@@ -203,15 +214,16 @@ export default defineConfig({
       return undefined
     },
     async onPageRendered(_, renderedHTML, appCtx) {
+      const collectedStyle = (appCtx as any).__collectStyle()
       return renderedHTML.replace(
-        /<\/head>/,
-        `${(appCtx as any).__collectStyle()}</head>`,
+        /<\/body>/,
+        `${collectedStyle}</body>`,
       )
     },
   },
 
   ssr: {
     // TODO: workaround until they support native ESM
-    noExternal: ['workbox-window', /vue-i18n/, 'naive-ui', 'vueuc', 'date-fns'],
+    noExternal: ['workbox-window', /vue-i18n/, 'naive-ui', 'vueuc', 'date-fns', 'pinia-plugin-persistedstate'],
   },
 })

@@ -85,7 +85,7 @@ function removeServerBackend(index: number) {
       </button>
     </div>
 
-    <div select-none pointer-events-none mt-3 md:mt-0 flex="~ items-center">
+    <div select-none pointer-events-none mt-3 md:mt-0 flex="~ items-center" text-nowrap>
       <div v-if="checking" flex="~ items-center gap-1">
         <NSpin :size="15" /> {{ $t('setting.checking-server') }}
       </div>

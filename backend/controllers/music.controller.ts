@@ -1,4 +1,4 @@
-import { ArtistDetailRequest, ArtistDetailResponse, MusicController, PersonalizedSongListRequest, PersonalizedSongListResponse, SongDetailRequest, SongDetailResponse, SongListDetailRequest, SongListDetailResponse, UserSongListsRequest, UserSongListsResponse, VersionResponse } from '#/music.protocol'
+import { ArtistDetailRequest, ArtistDetailResponse, MusicController, PersonalizedArtistsRequest, PersonalizedArtistsResponse, PersonalizedSongListRequest, PersonalizedSongListResponse, SongDetailRequest, SongDetailResponse, SongListDetailRequest, SongListDetailResponse, UserSongListsRequest, UserSongListsResponse, VersionResponse } from '#/music.protocol'
 import { version } from '#/package.json'
 import { UserService } from '@/services/user.service'
 import Netease from 'NeteaseCloudMusicApi'
@@ -24,6 +24,24 @@ export class MusicControllerImpl implements MusicController {
         id: item.id,
         name: item.name,
         cover: item.picUrl,
+      })),
+    }
+  }
+
+  async getPersonalizedArtists(request?: PersonalizedArtistsRequest): Promise<PersonalizedArtistsResponse> {
+    const response = await Netease.top_artists({
+      cookie: (request || {})?.cookie,
+      limit: (request || {}).limit,
+      offset: (request || {}).offset,
+    })
+
+    const result: any[] = (response.body.artists || []) as any[]
+
+    return {
+      result: result.map(item => ({
+        id: item.id,
+        name: item.name,
+        avatar: item.picUrl,
       })),
     }
   }

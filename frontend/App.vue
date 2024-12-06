@@ -35,8 +35,8 @@ const themeOverridesRef = computed(() => {
 </script>
 
 <template>
-  <NConfigProvider :locale="locale === 'zh-CN' ? zhCN : enUS" :theme-overrides="themeOverridesRef" :theme="isDark ? darkTheme : null">
-    <NMessageProvider>
+  <NConfigProvider inline-theme-disabled :locale="locale === 'zh-CN' ? zhCN : enUS" :theme-overrides="themeOverridesRef" :theme="isDark ? darkTheme : null">
+    <NMessageProvider placement="bottom" container-class="mb-40 md:mb-30">
       <RouterView>
         <template #default="{ Component }">
           <Transition
