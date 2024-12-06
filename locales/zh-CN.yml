@@ -13,5 +13,16 @@ nav:
 my:
   music-list: 我的歌单
 setting:
-  useInternalDownloadCookie: 是否使用网站内置cookie下载音乐
-  useInternalDownloadCookieDesc: 如果网站管理员配置了内置的cookie，并且此开关为开启状态，则下载音乐时会使用该内置cookie下载音乐。
+  use-internal-download-cookie: 是否使用网站内置cookie下载音乐
+  use-internal-download-cookie-desc: 如果网站管理员配置了内置的cookie，并且此开关为开启状态，则下载音乐时会使用该内置cookie下载音乐。
+  switch-theme: 切换主题模式
+  switch-theme-desc: 切换主题模式。
+  switch-language: 切换语言
+  switch-language-desc: 切换语言。
+play-list-detail:
+  replace-current-play-list: 替换当前播放列表
+  download-all: 下载
+  item-action:
+    play: 播放
+    push-to-play-list: 添加到播放列表
+    download: 下载

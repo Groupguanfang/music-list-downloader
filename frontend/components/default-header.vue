@@ -57,9 +57,12 @@ const rightButton = computed(() => [
     </nav>
 
     <div px="3 md:6 lg:14" absolute pointer-events-none size-full flex="~ items-center justify-between" class="top-0">
+      <!-- Left buttons -->
       <div flex="~ gap-4">
         <NTooltip v-for="(item, index) in leftButton" :key="index">
-          {{ item.text }}
+          <div select-none>
+            {{ item.text }}
+          </div>
           <template #trigger>
             <button
               class="pointer-events-auto! hover:bg-gray/20 active:bg-gray/15" rounded-full transition-all btn
@@ -70,9 +73,13 @@ const rightButton = computed(() => [
           </template>
         </NTooltip>
       </div>
+
+      <!-- Right buttons -->
       <div flex="~ gap-1">
         <NTooltip v-for="(item, index) in rightButton" :key="index">
-          {{ item.text }}
+          <div select-none>
+            {{ item.text }}
+          </div>
           <template #trigger>
             <button
               class="pointer-events-auto! hover:bg-gray/20 active:bg-gray/15"

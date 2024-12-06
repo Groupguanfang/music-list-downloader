@@ -7,20 +7,22 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    DefaultHeader: typeof import('./components/default-header.vue')['default']
-    FormLabel: typeof import('./components/form-label.vue')['default']
+    DefaultHeader: typeof import('./../frontend/components/default-header.vue')['default']
+    FormLabel: typeof import('./../frontend/components/form-label.vue')['default']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NDivider: typeof import('naive-ui')['NDivider']
     NImage: typeof import('naive-ui')['NImage']
     NSkeleton: typeof import('naive-ui')['NSkeleton']
+    NSpin: typeof import('naive-ui')['NSpin']
     NSwitch: typeof import('naive-ui')['NSwitch']
     NTooltip: typeof import('naive-ui')['NTooltip']
     PCOperationLayer: typeof import('./components/PCOperationLayer.vue')['default']
-    PlayerBar: typeof import('./components/player-bar.vue')['default']
-    README: typeof import('./components/README.md')['default']
+    PlayerBar: typeof import('./../frontend/components/player-bar.vue')['default']
+    README: typeof import('./../frontend/components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SkeletonImage: typeof import('./components/skeleton-image.vue')['default']
-    SongListCard: typeof import('./components/song-list-card.vue')['default']
+    SkeletonImage: typeof import('./../frontend/components/skeleton-image.vue')['default']
+    SongListCard: typeof import('./../frontend/components/song-list-card.vue')['default']
+    SongListItem: typeof import('./../frontend/components/song-list-item.vue')['default']
   }
 }

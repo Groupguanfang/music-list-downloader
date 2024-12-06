@@ -7,10 +7,10 @@ defineProps<{
 
 <template>
   <div>
-    <h2 text-lg font-bold mb-1>
+    <h2 select-none text-lg font-bold mb-1>
       {{ label }}
     </h2>
-    <div op-70>
+    <div select-none op-70>
       {{ description }}
     </div>
   </div>

@@ -6,7 +6,7 @@ const router = useRouter()
 const musicController = useMusicController()
 
 const personalizedSongListResult = ref<PersonalizedSongListResponseResult[]>([])
-musicController.getPersonalizedSongLists().then(response =>
+await musicController.getPersonalizedSongLists().then(response =>
   personalizedSongListResult.value = response.result,
 )
 

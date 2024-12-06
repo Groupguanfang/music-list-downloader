@@ -13,5 +13,16 @@ nav:
 my:
   music-list: My Music List
 setting:
-  useInternalDownloadCookie: Use internal download cookie
-  useInternalDownloadCookieDesc: If the website administrator has configured the built-in cookie and this switch is turned on, the built-in cookie will be used to download music when downloading music.
+  use-internal-download-cookie: Use internal download cookie
+  use-internal-download-cookie-desc: If the website administrator has configured the built-in cookie and this switch is turned on, the built-in cookie will be used to download music when downloading music.
+  switch-theme: Switch Theme Mode
+  switch-theme-desc: Switch theme mode.
+  switch-language: Switch Language
+  switch-language-desc: Switch language.
+play-list-detail:
+  replace-current-play-list: Replace the current playlist
+  download-all: Download
+  item-action:
+    play: Play
+    push-to-play-list: Push to playlist
+    download: Download

@@ -12,7 +12,7 @@ const result = ref<Partial<CurrentAccountResponse>>({})
 const songLists = ref<Partial<UserSongListsResponse>>({
   songLists: [],
 })
-musicController.user.getCurrentAccount({ cookie: cookie.value }).then(response =>
+await musicController.user.getCurrentAccount({ cookie: cookie.value }).then(response =>
   result.value = response,
 ).then(() => musicController.getUserSongLists({ id: result.value.id! })).then(response =>
   songLists.value = response,

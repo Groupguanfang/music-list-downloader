@@ -26,11 +26,13 @@ export async function toggleWithAnimate({ clientX: x, clientY: y }: MouseEvent, 
   }).ready
 
   document.documentElement.animate(
-    { clipPath: !isDark ? clipPath.reverse() : clipPath },
+    { clipPath: isDark.value ? clipPath.reverse() : clipPath },
     {
-      duration: 500,
+      duration: 400,
       easing: 'ease-in-out',
-      pseudoElement: `::view-transition-new(root)`,
+      pseudoElement: isDark.value
+        ? '::view-transition-old(root)'
+        : '::view-transition-new(root)',
     },
   )
 }
