@@ -6,6 +6,9 @@ import { NodeAdapter } from '@nailyjs/backend/node-adapter'
 import { ConfigPlugin } from '@nailyjs/config'
 import { RpcBootstrap } from '@nailyjs/rpc'
 import { TypeOrmPlugin } from '@nailyjs/typeorm'
+import { load } from 'js-yaml'
+import { get } from 'lodash-es'
+import config from '../config.yml?raw'
 import { getEntities } from './utils/entities'
 
 // Import all configurations
@@ -13,10 +16,12 @@ import.meta.glob('./configurations/**/*.configuration.ts', { eager: true })
 // Import all controllers
 import.meta.glob('./controllers/**/*.controller.ts', { eager: true })
 
+const result: any = load(config || '')
+
 // You must export `app` for the plugin to work.
 // you also can configure your export key in the plugin options.
 export const app = new RpcBootstrap()
-  .setBaseURL('/rpc')
+  .setBaseURL(get(result, 'internalServer.baseURL', '/_api'))
   .setBackendAdapter(NodeAdapter)
   .use(ConfigPlugin())
   .use(TypeOrmPlugin({ entities: getEntities() }))
