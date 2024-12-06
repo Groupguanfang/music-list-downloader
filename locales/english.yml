@@ -1,5 +1,7 @@
 popular-music-list: Popular List
 common:
+  no-login: Not logged in, please login first
+  login-expired: Login expired, please login again
   switch:
     on: On
     off: Off

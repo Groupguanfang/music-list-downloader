@@ -1,4 +1,25 @@
+import { match } from 'ts-pattern'
+
 context('Basic', () => {
+  beforeEach(() => {
+    cy.visit('/')
+  })
+
+  it('basic nav', () => {
+    cy.get('nav')
+      .should('exist')
+      .get('button')
+      .should('exist')
+      .should('have.length', 6)
+      .each(($el, index) => match(index).with(0, () => {
+        cy.wrap($el).click()
+        cy.url().should('eq', 'http://localhost:5173/')
+      }).with(1, () => {
+        cy.wrap($el).click()
+        cy.url().should('eq', 'http://localhost:5173/my')
+      }).otherwise(() => void 0))
+  })
+
   // beforeEach(() => {
   //   cy.visit('/')
   // })

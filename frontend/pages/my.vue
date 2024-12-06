@@ -1,22 +1,38 @@
 <script setup lang="tsx">
 import { CurrentAccountResponse, UserSongListsResponse } from '#/music.protocol'
+import { useMessage } from 'naive-ui'
 import { useMusicController } from '~/apis/music'
 
 const router = useRouter()
+const { t } = useI18n()
+const message = useMessage()
 const musicController = useMusicController()
 const cookie = useLocalStorage('__naily:music-downloader-cookie__', '')
-if (!cookie.value)
+if (!cookie.value) {
+  message.error(t('common.no-login'))
   router.push('/login')
+}
 
 const result = ref<Partial<CurrentAccountResponse>>({})
 const songLists = ref<Partial<UserSongListsResponse>>({
   songLists: [],
 })
-await musicController.user.getCurrentAccount({ cookie: cookie.value }).then(response =>
-  result.value = response,
-).then(() => musicController.getUserSongLists({ id: result.value.id! })).then(response =>
-  songLists.value = response,
-)
+
+async function requestAccountInfo() {
+  await musicController.user.getCurrentAccount({ cookie: cookie.value })
+    .then(response => result.value = response)
+    .then(() => musicController.getUserSongLists({ id: result.value.id! }))
+    .then(response => songLists.value = response)
+    .catch(() => {
+      if (cookie.value) {
+        cookie.value = undefined
+        message.error(t('common.login-expired'))
+      }
+      router.push('/login')
+    })
+}
+if (cookie.value)
+  requestAccountInfo()
 
 const avatarIsLoaded = ref(false)
 </script>

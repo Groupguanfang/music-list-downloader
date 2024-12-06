@@ -1,5 +1,7 @@
 popular-music-list: 热门歌单
 common:
+  no-login: 未登录 请先登录
+  login-expired: 登录已过期，请重新登录
   switch:
     on: 开
     off: 关
