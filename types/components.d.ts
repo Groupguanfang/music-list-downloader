@@ -19,7 +19,6 @@ declare module 'vue' {
     NSpin: typeof import('naive-ui')['NSpin']
     NSwitch: typeof import('naive-ui')['NSwitch']
     NTooltip: typeof import('naive-ui')['NTooltip']
-    PCOperationLayer: typeof import('./components/PCOperationLayer.vue')['default']
     PlayerBar: typeof import('./../frontend/components/player-bar.vue')['default']
     README: typeof import('./../frontend/components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

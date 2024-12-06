@@ -196,6 +196,19 @@ export default defineConfig({
       await buildServer()
       generateSitemap({ outDir: './dist/frontend' })
     },
+    async onBeforePageRender(_, __, appCtx) {
+      // eslint-disable-next-line ts/ban-ts-comment
+      // @ts-expect-error
+      const { collect } = setup(appCtx.app)
+      ;(appCtx as any).__collectStyle = collect
+      return undefined
+    },
+    async onPageRendered(_, renderedHTML, appCtx) {
+      return renderedHTML.replace(
+        /<\/head>/,
+        `${(appCtx as any).__collectStyle()}</head>`,
+      )
+    },
   },
 
   ssr: {

@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.27.3",
+    "@css-render/vue3-ssr": "^0.15.14",
     "@iconify-json/carbon": "^1.2.4",
     "@iconify-json/ph": "^1.2.1",
     "@intlify/unplugin-vue-i18n": "^4.0.0",
