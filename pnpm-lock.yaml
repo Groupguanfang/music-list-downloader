@@ -26,6 +26,9 @@ importers:
       '@vueuse/head':
         specifier: ^2.0.0
         version: 2.0.0(vue@3.5.12(typescript@5.6.3))
+      axios:
+        specifier: ^1.7.9
+        version: 1.7.9
       defu:
         specifier: ^6.1.4
         version: 6.1.4
@@ -3263,8 +3266,8 @@ packages:
   aws4@1.13.2:
     resolution: {integrity: sha512-lHe62zvbTB5eEABUVi/AwVh0ZKY9rMMDhmm+eeyuuUQbQ3+J+fONVQOZyj+DdrvD4BY33uYniyRJ4UJIaSKAfw==}
 
-  axios@1.7.7:
-    resolution: {integrity: sha512-S4kL7XrjgBmvdGut0sN3yJxqYzrDOnivkBiN0OFs6hLiUam3UPvswUo0kqGyhqUZGEOytHyumEdXsAkgCOUf3Q==}
+  axios@1.7.9:
+    resolution: {integrity: sha512-LhLcE7Hbiryz8oMDdDptSrWowmB4Bl6RCt6sIJKpRB4XtVf0iEgewX3au/pJqm+Py1kCASkb/FFKjxQaLtxJvw==}
 
   babel-plugin-polyfill-corejs2@0.4.11:
     resolution: {integrity: sha512-sMEJ27L0gRHShOh5G54uAAPaiCOygY/5ratXuiyb2G46FmlSpc9eFCzYVyDiPxfNbwzA7mYahmjQc5q+CZQ09Q==}
@@ -9940,7 +9943,7 @@ snapshots:
     dependencies:
       '@nailyjs/backend': 2.0.7
       '@nailyjs/ioc': 2.0.5
-      axios: 1.7.7
+      axios: 1.7.9
       reflect-metadata: 0.2.2
     transitivePeerDependencies:
       - debug
@@ -11550,7 +11553,7 @@ snapshots:
 
   NeteaseCloudMusicApi@4.25.0:
     dependencies:
-      axios: 1.7.7
+      axios: 1.7.9
       crypto-js: 4.2.0
       express: 4.21.1
       express-fileupload: 1.5.1
@@ -11740,7 +11743,7 @@ snapshots:
 
   aws4@1.13.2: {}
 
-  axios@1.7.7:
+  axios@1.7.9:
     dependencies:
       follow-redirects: 1.15.9
       form-data: 4.0.1
@@ -17467,7 +17470,7 @@ snapshots:
 
   vite-plugin-webfont-dl@3.9.5(vite@5.4.10(@types/node@22.9.0)(less@4.2.1)(terser@5.36.0)):
     dependencies:
-      axios: 1.7.7
+      axios: 1.7.9
       clean-css: 5.3.3
       flat-cache: 5.0.0
       picocolors: 1.1.1

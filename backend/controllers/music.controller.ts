@@ -1,4 +1,5 @@
-import { ArtistDetailRequest, ArtistDetailResponse, MusicController, PersonalizedSongListRequest, PersonalizedSongListResponse, SongDetailRequest, SongDetailResponse, SongListDetailRequest, SongListDetailResponse, UserSongListsRequest, UserSongListsResponse } from '#/music.protocol'
+import { ArtistDetailRequest, ArtistDetailResponse, MusicController, PersonalizedSongListRequest, PersonalizedSongListResponse, SongDetailRequest, SongDetailResponse, SongListDetailRequest, SongListDetailResponse, UserSongListsRequest, UserSongListsResponse, VersionResponse } from '#/music.protocol'
+import { version } from '#/package.json'
 import { UserService } from '@/services/user.service'
 import Netease from 'NeteaseCloudMusicApi'
 
@@ -126,6 +127,12 @@ export class MusicControllerImpl implements MusicController {
         ...(artistData.transNames || []),
         ...(artistData.alias || []),
       ],
+    }
+  }
+
+  async getVersion(): Promise<VersionResponse> {
+    return {
+      version,
     }
   }
 }

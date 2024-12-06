@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { darkTheme } from 'naive-ui'
+import { darkTheme, enUS, zhCN } from 'naive-ui'
 import themeOverrides from './styles/theme-overrides'
 
 // https://github.com/vueuse/head
@@ -26,6 +26,7 @@ useHead({
   ],
 })
 
+const { locale } = useI18n()
 const themeOverridesRef = computed(() => {
   return !isDark.value
     ? themeOverrides[0].value
@@ -34,28 +35,30 @@ const themeOverridesRef = computed(() => {
 </script>
 
 <template>
-  <NConfigProvider :theme-overrides="themeOverridesRef" :theme="isDark ? darkTheme : null">
-    <RouterView>
-      <template #default="{ Component }">
-        <Transition
-          enter-active-class="transition ease-in-out duration-200"
-          enter-to-class="opacity-100"
-          leave-active-class="transition ease-in-out duration-200"
-          leave-to-class="opacity-0"
-        >
-          <KeepAlive>
-            <Suspense suspensible>
-              <component :is="Component" />
+  <NConfigProvider :locale="locale === 'zh-CN' ? zhCN : enUS" :theme-overrides="themeOverridesRef" :theme="isDark ? darkTheme : null">
+    <NMessageProvider>
+      <RouterView>
+        <template #default="{ Component }">
+          <Transition
+            enter-active-class="transition ease-in-out duration-200"
+            enter-to-class="opacity-100"
+            leave-active-class="transition ease-in-out duration-200"
+            leave-to-class="opacity-0"
+          >
+            <KeepAlive>
+              <Suspense suspensible>
+                <component :is="Component" />
 
-              <template #fallback>
-                <div fixed top-0 left-0 size-full flex="~ justify-center items-center">
-                  <NSpin description="正在加载中..." />
-                </div>
-              </template>
-            </Suspense>
-          </KeepAlive>
-        </Transition>
-      </template>
-    </RouterView>
+                <template #fallback>
+                  <div fixed top-0 left-0 size-full flex="~ justify-center items-center">
+                    <NSpin description="正在加载中..." />
+                  </div>
+                </template>
+              </Suspense>
+            </KeepAlive>
+          </Transition>
+        </template>
+      </RouterView>
+    </NMessageProvider>
   </NConfigProvider>
 </template>

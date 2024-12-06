@@ -54,6 +54,9 @@ export interface ArtistDetailResponse extends Artist, Aliasable {
   albumCount: number
   singleSongCount: number
 }
+export interface VersionResponse {
+  version: string
+}
 export interface MusicController {
   readonly user: IUserService
 
@@ -62,6 +65,7 @@ export interface MusicController {
   getUserSongLists(request: UserSongListsRequest): Promise<UserSongListsResponse>
   getSongDetail(request: SongDetailRequest): Promise<SongDetailResponse>
   getArtistDetail(request: ArtistDetailRequest): Promise<ArtistDetailResponse>
+  getVersion(): Promise<VersionResponse>
 }
 export interface IUserService {
   createQrCode(): Promise<CreateQrCodeResponse>

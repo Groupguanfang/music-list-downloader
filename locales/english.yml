@@ -15,6 +15,24 @@ my:
 setting:
   use-internal-download-cookie: Use internal download cookie
   use-internal-download-cookie-desc: If the website administrator has configured the built-in cookie and this switch is turned on, the built-in cookie will be used to download music when downloading music.
+  server-manager: Server Manager
+  server-manager-desc: Manage server configuration. Server configuration is saved in your browser and the server does not save your server configuration.
+  used-server: Used current server
+  checking-server: Checking if the server is available...
+  server-manager-message:
+    no-exist: Server does not exist
+    address-empty: Server address cannot be empty
+    name-empty: Server name cannot be empty
+    connected: Connected to the server, version {version}
+  server-manager-input:
+    name-placeholder: Please enter the server name
+    url-placeholder: Please enter the server address
+  server-manager-action:
+    add: Add Server
+    delete: Delete Server
+    set: Use this server
+    up: Move up
+    down: Move down
   switch-theme: Switch Theme Mode
   switch-theme-desc: Switch theme mode.
   switch-language: Switch Language
