@@ -93,4 +93,4 @@ jobs:
         with:
           install-command: echo
           build: pnpm run build
-          start: npx vite preview
+          start: npx vite preview --port 4173
