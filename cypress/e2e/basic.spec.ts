@@ -12,10 +12,10 @@ context('Basic', () => {
       .should('exist')
       .should('have.length', 6)
       .each(($el, index) => match(index).with(0, () => {
-        cy.wrap($el).click()
+        cy.wrap($el).click().wait(2000)
         cy.url().should('eq', 'http://localhost:5173/')
       }).with(1, () => {
-        cy.wrap($el).click()
+        cy.wrap($el).click().wait(2000)
         cy.url().should('eq', 'http://localhost:5173/my')
       }).otherwise(() => void 0))
   })
