@@ -20,7 +20,7 @@ setting:
   switch-language: 切换语言
   switch-language-desc: 切换语言。
 play-list-detail:
-  replace-current-play-list: 替换当前播放列表
+  replace-current-play-list: 播放全部
   download-all: 下载
   item-action:
     play: 播放

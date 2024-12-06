@@ -39,10 +39,8 @@ const themeOverridesRef = computed(() => {
       <template #default="{ Component }">
         <Transition
           enter-active-class="transition ease-in-out duration-200"
-          enter-class="opacity-0"
           enter-to-class="opacity-100"
           leave-active-class="transition ease-in-out duration-200"
-          leave-class="opacity-100"
           leave-to-class="opacity-0"
         >
           <KeepAlive>

@@ -16,6 +16,10 @@ export interface Idable {
   id: number | string
 }
 
+export interface Aliasable<Alias extends any[] = string[]> {
+  alias: Alias
+}
+
 export interface Nameable {
   name: string
 }

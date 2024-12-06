@@ -1,4 +1,4 @@
-import { MusicController, PersonalizedSongListRequest, PersonalizedSongListResponse, SongDetailRequest, SongDetailResponse, SongListDetailRequest, SongListDetailResponse, UserSongListsRequest, UserSongListsResponse } from '#/music.protocol'
+import { ArtistDetailRequest, ArtistDetailResponse, MusicController, PersonalizedSongListRequest, PersonalizedSongListResponse, SongDetailRequest, SongDetailResponse, SongListDetailRequest, SongListDetailResponse, UserSongListsRequest, UserSongListsResponse } from '#/music.protocol'
 import { UserService } from '@/services/user.service'
 import Netease from 'NeteaseCloudMusicApi'
 
@@ -104,6 +104,28 @@ export class MusicControllerImpl implements MusicController {
         id: artist.id,
         name: artist.name,
       })),
+    }
+  }
+
+  async getArtistDetail(request: ArtistDetailRequest): Promise<ArtistDetailResponse> {
+    const response = await Netease.artist_detail({
+      id: (request || {}).id,
+    })
+
+    const result = response.body.data as any || {}
+    const artistData = result.artist || {}
+
+    return {
+      id: artistData.id,
+      name: artistData.name,
+      avatar: artistData.avatar,
+      description: artistData.briefDesc,
+      albumCount: artistData.albumSize,
+      singleSongCount: artistData.musicSize,
+      alias: [
+        ...(artistData.transNames || []),
+        ...(artistData.alias || []),
+      ],
     }
   }
 }

@@ -42,7 +42,7 @@ const avatarIsLoaded = ref(false)
       <div columns-2 md:columns-2 lg:columns-4 xl:columns-5 gap-4>
         <SongListCard
           v-for="(item, index) in songLists.songLists" v-bind="item" :key="index" break-inside-avoid
-          @click="$router.push(`/play-list/${item.id}/detail`)"
+          @click="$router.push(`/play-list/${item.id}`)"
         />
       </div>
     </div>

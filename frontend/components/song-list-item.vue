@@ -1,4 +1,4 @@
-<script setup lang="tsx">
+<script setup lang="ts">
 import { Song } from '#/music.protocol'
 import { vLongpress } from '~/directives/longpress'
 
@@ -31,7 +31,11 @@ const listRightActionButtons = computed(() => [
 <template>
   <div v-longpress="() => console.log('444')" class="hover:bg-gray/10 transition-all rounded-xl p-2" flex="~ justify-between col md:row gap-2">
     <div flex="~ items-center gap-2">
-      <NImage size="15" lazy transition-all rounded-xl width="100%" :img-props="{ style: { 'min-width': '3.75rem' } }" :src="song.cover">
+      <NImage
+        size="15" :src="`${song.cover}?param=100y100`" :preview-src="song.cover"
+        lazy transition-all rounded-xl
+        width="100%" :img-props="{ style: { 'min-width': '3.75rem' } }"
+      >
         <template #placeholder>
           <NSkeleton w-15 h-15 rounded-xl transition-all />
         </template>
@@ -48,7 +52,10 @@ const listRightActionButtons = computed(() => [
             id: {{ song.id }}
           </div>
           <div flex="~ items-center wrap">
-            <div v-for="(artistItem, artistIndex) in song.artists" :key="artistIndex" flex="~ items-center">
+            <div
+              v-for="(artistItem, artistIndex) in song.artists" :key="artistIndex" flex="~ items-center"
+              @click="$router.push(`/artist/${artistItem.id}`)"
+            >
               <div op="70 hover:100" transition-all cursor-pointer>
                 {{ artistItem.name }}
               </div>

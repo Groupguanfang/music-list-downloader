@@ -2,6 +2,8 @@
 import { SongListDetailResponse } from '#/music.protocol'
 import { useMusicController } from '~/apis/music'
 
+defineOptions({ name: 'PlayListDetail' })
+
 const cookie = useLocalStorage('__naily:music-downloader-cookie__', undefined)
 const route = useRoute()
 const { id } = route.params as { id: string }
@@ -16,7 +18,10 @@ musicController.getSongListDetail({ id, cookie: cookie.value }).then(response =>
 <template>
   <div min-h-screen>
     <div flex="~">
-      <SkeletonImage class="size-20 md:size-50 transition-all rounded-xl" skeleton-class="size-20 md:size-50" :src="songListDetail.cover" />
+      <SkeletonImage
+        class="size-20 md:size-50 min-w-20 md:min-w-50 transition-all rounded-xl"
+        skeleton-class="size-20 md:size-50" :src="songListDetail.cover"
+      />
       <div ml-4>
         <NSkeleton v-if="!songListDetail.name" mt-3 w-md h-7 rounded-sm transition-all />
         <div v-show="songListDetail.name" mt-3 font-bold text-lg md:text-xl text-black dark:text-white transition-all>

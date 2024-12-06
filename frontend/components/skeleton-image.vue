@@ -10,5 +10,5 @@ const isLoaded = ref(false)
 
 <template>
   <NSkeleton v-if="!isLoaded" size-full transition-all rounded-xl :class="skeletonClass" />
-  <img v-show="isLoaded" v-bind="$attrs" :src="src" @load="isLoaded = true">
+  <NImage v-show="isLoaded" v-bind="$attrs" :src="`${src}?param=200y200`" object-fit="cover" :preview-src="src" @load="isLoaded = true" />
 </template>

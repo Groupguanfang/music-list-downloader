@@ -1,4 +1,4 @@
-import type { Coverable, Describeable, Idable, Limitable, Nameable, RequestBase } from './types'
+import type { Aliasable, Coverable, Describeable, Idable, Limitable, Nameable, RequestBase } from './types'
 
 export const MusicController = 'MusicController'
 
@@ -23,9 +23,8 @@ export interface CheckQrCodeResponse {
   cookie: string
 }
 export interface Artist extends Idable, Nameable {}
-export interface Song extends Idable, Nameable, Coverable {
+export interface Song extends Idable, Nameable, Coverable, Aliasable {
   subTitle: string | null
-  alias: string[]
   artists: Artist[]
 }
 export interface SongListDetailRequest extends RequestBase, Idable {}
@@ -48,6 +47,13 @@ export interface SongDetailRequest extends RequestBase, Idable {
 export interface SongDetailResponse extends Song {
   url: string
 }
+export interface ArtistDetailRequest extends RequestBase, Idable {}
+export interface ArtistDetailResponse extends Artist, Aliasable {
+  avatar: string
+  description: string
+  albumCount: number
+  singleSongCount: number
+}
 export interface MusicController {
   readonly user: IUserService
 
@@ -55,6 +61,7 @@ export interface MusicController {
   getSongListDetail(request?: SongListDetailRequest): Promise<SongListDetailResponse>
   getUserSongLists(request: UserSongListsRequest): Promise<UserSongListsResponse>
   getSongDetail(request: SongDetailRequest): Promise<SongDetailResponse>
+  getArtistDetail(request: ArtistDetailRequest): Promise<ArtistDetailResponse>
 }
 export interface IUserService {
   createQrCode(): Promise<CreateQrCodeResponse>

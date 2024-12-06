@@ -4,9 +4,7 @@ import { loadLanguageAsync } from '~/modules/i18n'
 
 const { locale } = useI18n()
 
-const result = useLocalStorage('__naily:music-downloader-setting__', {
-  useInternalDownloadCookie: false,
-})
+const settingStore = useSettingStore()
 </script>
 
 <template>
@@ -14,9 +12,9 @@ const result = useLocalStorage('__naily:music-downloader-setting__', {
     <section>
       <FormLabel mb4 :label="$t('setting.use-internal-download-cookie')" :description="$t('setting.use-internal-download-cookie-desc')" />
       <div flex="~ items-center gap-3">
-        <NSwitch v-model:value="result.useInternalDownloadCookie" size="large" />
+        <NSwitch v-model:value="settingStore.useInternalDownloadCookie" size="large" />
         <div select-none>
-          {{ result.useInternalDownloadCookie ? $t('common.switch.on') : $t('common.switch.off') }}
+          {{ settingStore.useInternalDownloadCookie ? $t('common.switch.on') : $t('common.switch.off') }}
         </div>
       </div>
     </section>

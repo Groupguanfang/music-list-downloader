@@ -6,6 +6,7 @@ export default defineConfig({
     app: {
       internalCookie: 'MUSIC_U',
     },
+
     typeorm: {
       type: 'sqlite',
       database: path.resolve('./data/naily.db'),

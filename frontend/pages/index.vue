@@ -11,12 +11,12 @@ await musicController.getPersonalizedSongLists().then(response =>
 )
 
 function handleSongListCardClick(e: MouseEvent, item: PersonalizedSongListResponseResult) {
-  router.push(`/play-list/${item.id}/detail`)
+  router.push(`/play-list/${item.id}`)
 }
 </script>
 
 <template>
-  <div pt="10 md:7" pb-30>
+  <div>
     <h1 pointer-events-none select-none font-extrabold text="size-3xl md:size-2xl" flex="~ items-center gap-2">
       <div i-ph-list-numbers-duotone hidden md:block />
       {{ $t('popular-music-list') }}

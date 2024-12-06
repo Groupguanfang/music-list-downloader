@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
     "alia",
+    "Aliasable",
     "antfu",
     "buildin",
     "Coverable",
@@ -19,6 +20,7 @@
     "nprogress",
     "Offsetable",
     "Paginationable",
+    "persistedstate",
     "pinia",
     "pnpm",
     "qrimg",
