@@ -7,6 +7,7 @@ import App from './App.vue'
 
 import '@unocss/reset/tailwind.css'
 import './styles/main.css'
+import './styles/theme.css'
 import 'uno.css'
 
 // https://github.com/antfu/vite-ssg

@@ -10,8 +10,9 @@ const props = defineProps<{
   remove: (index: number) => void
   move: (direction: 'up' | 'down', index: number) => void
 }>()
-const message = useMessage()
+
 const { t } = useI18n()
+const message = useMessage()
 const settingStore = useSettingStore()
 
 const currentServerBackend = computed(() =>
