@@ -10,3 +10,5 @@ node_modules
 cypress/downloads
 .vercel
 /data
+dist-electron
+release

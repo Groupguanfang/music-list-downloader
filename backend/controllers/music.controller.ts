@@ -1,7 +1,10 @@
 import { ArtistDetailRequest, ArtistDetailResponse, MusicController, PersonalizedArtistsRequest, PersonalizedArtistsResponse, PersonalizedSongListRequest, PersonalizedSongListResponse, SongDetailRequest, SongDetailResponse, SongListDetailRequest, SongListDetailResponse, UserSongListsRequest, UserSongListsResponse, VersionResponse } from '#/music.protocol'
 import { version } from '#/package.json'
 import { UserService } from '@/services/user.service'
+import { Value } from '@nailyjs/config'
+import { RpcController } from '@nailyjs/rpc'
 import Netease from 'NeteaseCloudMusicApi'
+import { computed } from 'vue'
 
 @RpcController(MusicController)
 export class MusicControllerImpl implements MusicController {

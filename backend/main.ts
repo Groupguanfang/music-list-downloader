@@ -5,14 +5,10 @@ import { env } from 'node:process'
 import { NodeAdapter } from '@nailyjs/backend/node-adapter'
 import { ConfigPlugin } from '@nailyjs/config'
 import { RpcBootstrap } from '@nailyjs/rpc'
-import { TypeOrmPlugin } from '@nailyjs/typeorm'
 import { load } from 'js-yaml'
 import { get } from 'lodash-es'
 import config from '../config.yml?raw'
-import { getEntities } from './utils/entities'
 
-// Import all configurations
-import.meta.glob('./configurations/**/*.configuration.ts', { eager: true })
 // Import all controllers
 import.meta.glob('./controllers/**/*.controller.ts', { eager: true })
 
@@ -24,7 +20,6 @@ export const app = new RpcBootstrap()
   .setBaseURL(get(result, 'internalServer.baseURL', '/_api'))
   .setBackendAdapter(NodeAdapter)
   .use(ConfigPlugin())
-  .use(TypeOrmPlugin({ entities: getEntities() }))
 
 // It will be called when environment is production mode
 if (import.meta.env.PROD && env.NODE_ENV === 'production')
