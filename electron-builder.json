@@ -6,6 +6,13 @@
   "directories": {
     "output": "release/${version}"
   },
+  "publish": [
+    {
+      "provider": "github",
+      "owner": "Groupguanfang",
+      "repo": "music-list-downloader"
+    }
+  ],
   "files": [
     "dist-electron",
     "dist"
