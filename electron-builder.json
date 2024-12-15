@@ -38,6 +38,7 @@
     "oneClick": false,
     "perMachine": false,
     "allowToChangeInstallationDirectory": true,
-    "deleteAppDataOnUninstall": false
+    "deleteAppDataOnUninstall": false,
+    "include": "node_modules/app-builder-lib/templates/nsis/include/allowOnlyOneInstallerInstance.nsh"
   }
 }
