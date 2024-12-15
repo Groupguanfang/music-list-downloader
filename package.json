@@ -22,6 +22,7 @@
   ],
   "scripts": {
     "dev": "tsup && node ./bin/bin.js download-list 4930367030",
+    "dev:music": "tsup && node ./bin/bin.js download-music 354745",
     "build": "tsup",
     "prepublishOnly": "tsup",
     "lint": "eslint . --fix",

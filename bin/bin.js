@@ -2,7 +2,7 @@
 
 import { argv } from 'node:process'
 import { program } from 'commander'
-import { useDownloadList } from '../dist/index.js'
+import { useDownloadList, useDownloadMusic } from '../dist/index.js'
 
 program
   .name('music-list-downloader')
@@ -16,6 +16,17 @@ program
   .action((listId, downloadDir, { level } = { level: 'silly' },
   ) => {
     useDownloadList(listId, downloadDir, level)
+      .download()
+  })
+
+program.command('download-music <musicId> [downloadDir]')
+  .description('下载单首音乐。musicId: 音乐id,必须提供; downloadDir: 下载目录,默认为\'./config/music\'目录，你也可以指定一个目录')
+  .action((
+    musicId,
+    downloadDir,
+    { level } = { level: 'silly' },
+  ) => {
+    useDownloadMusic(musicId, downloadDir, level)
       .download()
   })
 
