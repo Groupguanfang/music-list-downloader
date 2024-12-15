@@ -10,6 +10,7 @@
     "build": "vite-ssg build",
     "build:electron": "vite build && electron-builder",
     "dev": "vite",
+    "dev:electron": "cross-env ELECTRON=true vite",
     "lint": "eslint .",
     "preview": "vite preview",
     "preview-https": "serve dist",

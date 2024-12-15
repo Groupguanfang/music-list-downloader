@@ -1,3 +1,4 @@
+/* eslint-disable eslint-comments/no-unlimited-disable */
 import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
@@ -197,7 +198,8 @@ export default defineConfig((env) => {
       // https://github.com/webfansplz/vite-plugin-vue-devtools
       VueDevTools(),
 
-      Electron([
+      // eslint-disable-next-line
+      process.env.ELECTRON ? Electron([
         {
           entry: './app/main.ts',
           vite: {
@@ -243,8 +245,8 @@ export default defineConfig((env) => {
             },
           },
         },
-      ]),
-    ],
+      ]) : undefined,
+    ].filter(Boolean),
 
     // https://github.com/vitest-dev/vitest
     test: {
