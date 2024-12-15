@@ -1,0 +1,67 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: pnpm
+
+      - name: Install pnpm
+        run: npm install -g pnpm@9.8.0
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build Vite project
+        run: pnpm build
+
+      - name: Build Electron app
+        run: pnpm build:electron
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.os }}-artifacts
+          path: release/**
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: macos-latest-artifacts
+          path: ./release/macos
+
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: windows-latest-artifacts
+          path: ./release/windows
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            release/macos/**
+            release/windows/**
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
