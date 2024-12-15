@@ -4,19 +4,43 @@
 
 因为不满网上那堆网易云音乐解析器，烂的要命，所以自己写了一个，主要是把歌单给下到我爸车上，方便他听歌。
 
+## 音乐id获取方法
+
+在任何网易云客户端播放某一首歌，点击分享按钮 - 复制链接，然后粘贴到浏览器地址栏，地址栏里面的id就是歌曲id。比如：
+
+```
+https://music.163.com/song?id=354745&userid=1370360255
+```
+
+这个地址里面的`354745`就是歌曲id，注意不是后面的那串`userid`后面的数字！这是用户id，没用的。
+
 ## 命令行使用
 
 首先环境必须得有`node`和`npm`，或者`yarn` `pnpm`随便哪个。
 
-- 第一步：创建一个空目录，然后进入这个目录，再创建一个config目录，config目录下面创建`cookie.txt`，然后退回到上层目录再运行:
-  ```bash
-  pnpx music-list-downloader download-list 歌单id 下崽目录路径
-  ```
-  例如：
-  ```bash
-  pnpx music-list-downloader download-list 3779629 ./config/music
-  ```
-  这样就会下载歌单id为3779629的歌单到`./config/music`目录下。
+第一步：创建一个空目录，然后进入这个目录，再创建一个config目录，config目录下面创建`cookie.txt`，然后退回到上层目录再运行:
+```bash
+pnpx music-list-downloader download-list 歌单id 下崽目录路径
+```
+例如：
+```bash
+pnpx music-list-downloader download-list 3779629 ./config/music
+```
+这样就会下载歌单id为3779629的歌单到`./config/music`目录下。
+
+## 下载单首歌曲
+
+0.0.3版本开始支持下载单首歌曲，使用方法如下：
+```bash
+pnpx music-list-downloader download-music 歌曲id 下崽目录路径
+```
+
+例如：
+```bash
+pnpx music-list-downloader download-music 354745 ./config/music
+```
+
+就会下载id为354745的歌曲到`./config/music`目录下。
 
 ## 网页版使用
 
