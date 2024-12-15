@@ -30,9 +30,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build Vite project
-        run: pnpm build
-
       - name: Build Electron app
         run: pnpm build:electron
 
