@@ -1,6 +1,6 @@
+import type { UserModule } from '~/types'
 import { createPinia } from 'pinia'
 import persistedstate from 'pinia-plugin-persistedstate'
-import type { UserModule } from '~/types'
 
 // Setup Pinia
 // https://pinia.vuejs.org/
