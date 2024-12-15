@@ -2,7 +2,7 @@
   "name": "music-list-downloader",
   "productName": "网易云音乐下崽器",
   "type": "module",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "private": true,
   "packageManager": "pnpm@9.8.0",
   "main": "./dist-electron/main.js",
