@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Song } from '#/music.protocol'
+import { Song } from '#/song.protocol'
 import { vLongpress } from '~/directives/longpress'
 
 defineProps<{
