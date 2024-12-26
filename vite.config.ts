@@ -34,7 +34,9 @@ const config = load(
 
 export default defineConfig((env) => {
   if (env.command === 'build')
-    console.log('Current mode:', (env.command === 'build' && process.argv[1].includes('vite-ssg')) ? 'SSG' : 'Electron')
+    console.log('Current mode:', (env.command === 'build' && process.argv[1].includes('vite-ssg')) ? 'Building SSG' : 'Building Electron')
+  else
+    console.log('Current mode:', `Serving ${env.command === 'serve' ? 'SSG' : 'Electron'}`)
   return {
     resolve: {
       alias: {
