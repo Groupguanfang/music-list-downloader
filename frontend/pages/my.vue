@@ -1,5 +1,6 @@
 <script setup lang="tsx">
-import { CurrentAccountResponse, UserSongListsResponse } from '#/music.protocol'
+import { UserSongListsResponse } from '#/song-list.protocol'
+import { CurrentAccountResponse } from '#/user.protocol'
 import { useMessage } from 'naive-ui'
 import { useMusicController } from '~/apis/music'
 
@@ -21,7 +22,7 @@ const songLists = ref<Partial<UserSongListsResponse>>({
 async function requestAccountInfo() {
   await musicController.user.getCurrentAccount({ cookie: cookie.value })
     .then(response => result.value = response)
-    .then(() => musicController.getUserSongLists({ id: result.value.id! }))
+    .then(() => musicController.songList.getUserSongLists({ id: result.value.id! }))
     .then(response => songLists.value = response)
     .catch(() => {
       if (cookie.value) {

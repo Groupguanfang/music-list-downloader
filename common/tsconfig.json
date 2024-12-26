@@ -6,5 +6,6 @@
     "module": "ES2022",
     "moduleResolution": "Bundler",
     "paths": {}
-  }
+  },
+  "exclude": ["dist"]
 }

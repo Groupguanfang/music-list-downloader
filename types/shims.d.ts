@@ -6,7 +6,6 @@ declare interface Window {
 }
 
 declare const __IS_SSG__: boolean
-declare const isElectron: boolean
 
 // with unplugin-vue-markdown, markdown files can be treated as Vue components
 declare module '*.md' {

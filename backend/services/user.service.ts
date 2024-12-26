@@ -8,7 +8,7 @@ import { match } from 'ts-pattern'
 export class UserService implements IUserService {
   async createQrCode(): Promise<CreateQrCodeResponse> {
     const qrCodeKey = await Netease.login_qr_key({})
-    const qrCodeKeyData = qrCodeKey.body.data as any
+    const qrCodeKeyData: any = qrCodeKey.body.data
 
     const qrCode = await Netease.login_qr_create({
       key: qrCodeKeyData.unikey as string | number,

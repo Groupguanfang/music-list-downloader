@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@naiable/utils": "^0.0.6",
-    "@nailyjs/electron": "^2.0.13",
+    "@nailyjs/electron": "^2.0.14",
     "@nailyjs/typeorm": "^2.0.25",
     "@types/js-yaml": "^4.0.9",
     "@types/lodash-es": "^4.17.12",

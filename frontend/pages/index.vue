@@ -1,12 +1,13 @@
 <script setup lang="tsx">
-import { PersonalizedArtistsResponseResult, PersonalizedSongListResponseResult } from '#/music.protocol'
+import { PersonalizedArtistsResponseResult } from '#/artist.protocol'
+import { PersonalizedSongListResponseResult } from '#/song-list.protocol'
 import { useMusicController } from '~/apis/music'
 
 const router = useRouter()
 const musicController = useMusicController()
 
 const personalizedSongListResult = ref<PersonalizedSongListResponseResult[]>([])
-await musicController.getPersonalizedSongLists().then(response =>
+await musicController.songList.getPersonalizedSongLists().then(response =>
   personalizedSongListResult.value = response.result,
 )
 
@@ -15,7 +16,7 @@ function handleSongListCardClick(e: MouseEvent, item: PersonalizedSongListRespon
 }
 
 const personalizedArtistsResult = ref<PersonalizedArtistsResponseResult[]>([])
-await musicController.getPersonalizedArtists({ limit: 12 }).then(response =>
+await musicController.artist.getPersonalizedArtists({ limit: 12 }).then(response =>
   personalizedArtistsResult.value = response.result,
 )
 

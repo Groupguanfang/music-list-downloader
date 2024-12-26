@@ -1,5 +1,5 @@
 <script setup lang="tsx">
-import { ArtistDetailResponse } from '#/music.protocol'
+import { ArtistDetailResponse } from '#/artist.protocol'
 import { useMusicController } from '~/apis/music'
 
 const route = useRoute()
@@ -7,7 +7,7 @@ const { id } = route.params as { id: string }
 
 const musicController = useMusicController()
 const artistDetail = ref<Partial<ArtistDetailResponse>>({})
-musicController.getArtistDetail({ id: id || '000' }).then(response =>
+musicController.artist.getArtistDetail({ id: id || '000' }).then(response =>
   artistDetail.value = response,
 )
 

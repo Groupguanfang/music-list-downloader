@@ -1,2 +1,6 @@
+export * from './artist.protocol'
 export * from './music.protocol'
+export * from './song-list.protocol'
+export * from './song.protocol'
 export * from './types'
+export * from './user.protocol'

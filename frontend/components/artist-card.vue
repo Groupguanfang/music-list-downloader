@@ -1,5 +1,5 @@
 <script setup lang="tsx">
-import { PersonalizedArtistsResponseResult } from '../../common/music.protocol'
+import { PersonalizedArtistsResponseResult } from '../../common/artist.protocol'
 
 const props = defineProps<PersonalizedArtistsResponseResult>()
 

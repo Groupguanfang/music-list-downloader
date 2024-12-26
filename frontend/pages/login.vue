@@ -1,5 +1,5 @@
 <script setup lang="tsx">
-import { CheckQrCodeResponseType } from '#/music.protocol'
+import { CheckQrCodeResponseType } from '#/user.protocol'
 import { match } from 'ts-pattern'
 import { useMusicController } from '~/apis/music'
 

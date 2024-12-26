@@ -1,5 +1,5 @@
 <script setup lang="tsx">
-import { SongListDetailResponse } from '#/music.protocol'
+import { SongListDetailResponse } from '#/song-list.protocol'
 import { useMusicController } from '~/apis/music'
 
 defineOptions({ name: 'PlayListDetail' })
@@ -10,7 +10,7 @@ const { id } = route.params as { id: string }
 
 const musicController = useMusicController()
 const songListDetail = ref<Partial<SongListDetailResponse>>({})
-musicController.getSongListDetail({ id, cookie: cookie.value }).then(response =>
+musicController.songList.getSongListDetail({ id, cookie: cookie.value }).then(response =>
   songListDetail.value = response,
 )
 </script>
