@@ -1,5 +1,5 @@
-import { CheckQrCodeResponse, CheckQrCodeResponseType, CreateQrCodeResponse, CurrentAccountResponse, IUserService } from '#/music.protocol'
 import { RequestBase } from '#/types'
+import { CheckQrCodeResponse, CheckQrCodeResponseType, CreateQrCodeResponse, CurrentAccountResponse, IUserService } from '#/user.protocol'
 import { Service } from '@nailyjs/ioc'
 import Netease from 'NeteaseCloudMusicApi'
 import { match } from 'ts-pattern'
