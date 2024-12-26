@@ -88,5 +88,6 @@
   ],
 
   "css.validate": false,
-  "less.validate": false
+  "less.validate": false,
+  "material-icon-theme.activeIconPack": "nest"
 }
