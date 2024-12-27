@@ -10,7 +10,7 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Opinionated Vite Starter Template',
+      content: '',
     },
     {
       name: 'theme-color',

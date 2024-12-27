@@ -1,8 +1,10 @@
+declare interface GlobalElectron {
+  request: (channel: string, ...args: any[]) => Promise<any>
+}
+
 declare interface Window {
   // extend the window
-  electron: {
-    request: (channel: string, ...args: any[]) => Promise<any>
-  }
+  electron: GlobalElectron
 }
 
 declare const __IS_SSG__: boolean
