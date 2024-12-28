@@ -4,6 +4,9 @@ common:
   switch:
     off: 关
     on: 开
+  exit: 退出
+  minimize: 最小化
+  maximize: 最大化
 home:
   popular-music-list: 热门歌单
   top-artists: 热门歌手

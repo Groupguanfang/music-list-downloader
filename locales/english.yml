@@ -4,6 +4,9 @@ common:
   switch:
     off: Off
     on: On
+  exit: Exit
+  minimize: Minimize
+  maximize: Maximize
 home:
   popular-music-list: Popular Music List
   top-artists: Top Artists

@@ -5,6 +5,7 @@
   "version": "2.0.3",
   "private": true,
   "packageManager": "pnpm@9.8.0",
+  "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
   "main": "./dist-electron/main.js",
   "scripts": {
     "build": "vite-ssg build",

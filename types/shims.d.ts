@@ -1,5 +1,9 @@
 declare interface GlobalElectron {
   request: (channel: string, ...args: any[]) => Promise<any>
+  closeWindow: () => void
+  minimizeWindow: () => void
+  maximizeWindow: () => void
+  getPlatform: () => Promise<NodeJS.Platform>
 }
 
 declare interface Window {

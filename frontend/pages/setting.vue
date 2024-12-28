@@ -5,6 +5,7 @@ import { loadLanguageAsync } from '~/modules/i18n'
 const { locale } = useI18n()
 
 const settingStore = useSettingStore()
+const { isElectron } = useEnvironment()
 </script>
 
 <template>
@@ -28,7 +29,7 @@ const settingStore = useSettingStore()
       </NDynamicInput>
     </section>
     <NDivider />
-    <section>
+    <section v-if="!isElectron">
       <FormLabel mb4 :label="$t('setting.use-internal-download-cookie')" :description="$t('setting.use-internal-download-cookie-desc')" />
       <div flex="~ items-center gap-3">
         <NSwitch v-model:value="settingStore.useInternalDownloadCookie" size="large" />
@@ -37,7 +38,7 @@ const settingStore = useSettingStore()
         </div>
       </div>
     </section>
-    <NDivider />
+    <NDivider v-if="!isElectron" />
     <section>
       <FormLabel mb4 :label="$t('setting.switch-theme')" :description="$t('setting.switch-theme-desc')" />
       <div flex="~ items-center gap-3">

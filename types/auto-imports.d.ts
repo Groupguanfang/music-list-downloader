@@ -165,6 +165,7 @@ declare global {
   const useElementHover: typeof import('@vueuse/core')['useElementHover']
   const useElementSize: typeof import('@vueuse/core')['useElementSize']
   const useElementVisibility: typeof import('@vueuse/core')['useElementVisibility']
+  const useEnvironment: typeof import('../frontend/composables/environment')['useEnvironment']
   const useEventBus: typeof import('@vueuse/core')['useEventBus']
   const useEventListener: typeof import('@vueuse/core')['useEventListener']
   const useEventSource: typeof import('@vueuse/core')['useEventSource']
@@ -203,6 +204,7 @@ declare global {
   const useMouse: typeof import('@vueuse/core')['useMouse']
   const useMouseInElement: typeof import('@vueuse/core')['useMouseInElement']
   const useMousePressed: typeof import('@vueuse/core')['useMousePressed']
+  const useMoveWindow: typeof import('../frontend/composables/move-window')['useMoveWindow']
   const useMutationObserver: typeof import('@vueuse/core')['useMutationObserver']
   const useNavigatorLanguage: typeof import('@vueuse/core')['useNavigatorLanguage']
   const useNetwork: typeof import('@vueuse/core')['useNetwork']
@@ -470,6 +472,7 @@ declare module 'vue' {
     readonly useElementHover: UnwrapRef<typeof import('@vueuse/core')['useElementHover']>
     readonly useElementSize: UnwrapRef<typeof import('@vueuse/core')['useElementSize']>
     readonly useElementVisibility: UnwrapRef<typeof import('@vueuse/core')['useElementVisibility']>
+    readonly useEnvironment: UnwrapRef<typeof import('../frontend/composables/environment')['useEnvironment']>
     readonly useEventBus: UnwrapRef<typeof import('@vueuse/core')['useEventBus']>
     readonly useEventListener: UnwrapRef<typeof import('@vueuse/core')['useEventListener']>
     readonly useEventSource: UnwrapRef<typeof import('@vueuse/core')['useEventSource']>

@@ -16,6 +16,16 @@ export default defineConfig({
       'px-5 py-2 rounded-md inline-block cursor-pointer outline-none disabled:opacity-50 disabled:cursor-not-allowed',
     ],
   ],
+  rules: [
+    [
+      'app-drag',
+      { '-webkit-app-region': 'drag' },
+    ],
+    [
+      'app-no-drag',
+      { '-webkit-app-region': 'no-drag' },
+    ],
+  ],
   presets: [
     presetUno(),
     presetAttributify(),
