@@ -27,3 +27,10 @@ declare module '*.vue' {
   const component: DefineComponent<object, object, any>
   export default component
 }
+
+interface Document {
+  startViewTransition(callback: () => Promise<void> | void): {
+    ready: Promise<void>
+    finished: Promise<void>
+  }
+}
