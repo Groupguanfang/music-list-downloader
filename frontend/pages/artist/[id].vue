@@ -28,7 +28,7 @@ export default { name: 'ArtistDetail' }
         <NImage :src="artistDetail.avatar" rounded-full />
       </div>
 
-      <div flex="~ col gap-1">
+      <div flex="~ col gap-1" w-full>
         <!-- 标题:歌手名称，数据 -->
         <div flex="~ col md:row justify-between md:items-center">
           <div flex="~ col gap-1">
@@ -36,7 +36,7 @@ export default { name: 'ArtistDetail' }
               {{ artistDetail.name }}
             </h1>
             <!-- 歌手别名 -->
-            <div font-size-3 flex="~ gap-2 items-center">
+            <div v-if="artistDetail.alias && artistDetail.alias.length > 0" font-size-3 flex="~ gap-2 items-center">
               别名:
               <div v-for="(alia, aliaIndex) in artistDetail.alias || []" :key="aliaIndex" op-70>
                 {{ alia }}

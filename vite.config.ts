@@ -37,6 +37,9 @@ export default defineConfig((env) => {
     console.log('Current mode:', (env.command === 'build' && process.argv[1].includes('vite-ssg')) ? 'Building SSG' : 'Building Electron')
   else
     console.log('Current mode:', `Serving ${env.command === 'serve' ? 'SSG' : 'Electron'}`)
+
+  const __IS_SSG__ = !!((env.command === 'build' && process.argv[0] === 'vite-ssg'))
+
   return {
     resolve: {
       alias: {
@@ -47,7 +50,7 @@ export default defineConfig((env) => {
     },
 
     define: {
-      __IS_SSG__: !!((env.command === 'build' && process.argv[0] === 'vite-ssg')),
+      __IS_SSG__,
     },
 
     build: {
@@ -56,6 +59,8 @@ export default defineConfig((env) => {
 
     // Disable esbuild when using swc
     esbuild: false as const,
+
+    base: __IS_SSG__ ? '/' : './',
 
     plugins: [
       // https://github.com/nailyjs/core
@@ -265,7 +270,14 @@ export default defineConfig((env) => {
       },
       entry: './frontend/main.ts',
       async onFinished() {
-        await buildServer()
+        await buildServer({
+          build: {
+            on: false,
+            viteOptions: {
+              publicDir: false,
+            },
+          },
+        })
         generateSitemap({ outDir: './dist/frontend' })
       },
       async onBeforePageRender(_, __, appCtx) {

@@ -25,6 +25,7 @@
     "sizecheck": "npx vite-bundle-visualizer"
   },
   "dependencies": {
+    "@iconify-json/material-symbols": "^1.2.12",
     "@naiable/utils": "^0.0.6",
     "@nailyjs/electron": "^2.0.14",
     "@nailyjs/typeorm": "^2.0.25",

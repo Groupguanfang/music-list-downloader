@@ -27,30 +27,30 @@ const currentLocation = computed(() => nav.value.find(item => item.to === route.
 const electronOperations = computed(() => isElectron.value
   ? [
       {
-        icon: 'i-ph-arrows-in-simple',
-        text: t('common.minimize'),
-        onClick: () => window.electron.minimizeWindow(),
+        icon: 'i-ph-sign-out-duotone',
+        text: t('common.exit'),
+        onClick: () => window.electron.closeWindow(),
       },
       {
-        icon: 'i-ph-arrows-out-simple',
+        icon: 'i-ph-app-window-duotone',
         text: t('common.maximize'),
         onClick: () => window.electron.maximizeWindow(),
       },
       {
-        icon: 'i-ph-sign-out',
-        text: t('common.exit'),
-        onClick: () => window.electron.closeWindow(),
+        icon: 'i-ph-arrow-down-left-duotone',
+        text: t('common.minimize'),
+        onClick: () => window.electron.minimizeWindow(),
       },
     ]
   : [])
 
 const leftButton = computed(() => [
+  ...(platform.value === 'darwin' ? electronOperations.value : []),
   {
     icon: 'i-ph-music-note-duotone',
     text: t('nav.music-player'),
     onClick: () => void 0,
   },
-  ...(platform.value === 'darwin' ? electronOperations.value : []),
 ])
 const rightButton = computed(() => [
   {
@@ -63,7 +63,7 @@ const rightButton = computed(() => [
     text: t('nav.switch-language'),
     onClick: () => toggleLocales(),
   },
-  ...(platform.value !== 'darwin' ? electronOperations.value : []),
+  ...(platform.value !== 'darwin' ? electronOperations.value : []).reverse(),
 ])
 </script>
 

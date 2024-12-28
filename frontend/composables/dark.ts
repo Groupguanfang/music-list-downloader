@@ -20,6 +20,8 @@ export async function toggleWithAnimate({ clientX: x, clientY: y }: MouseEvent, 
     )}px at ${x}px ${y}px)`,
   ]
 
+  // eslint-disable-next-line ts/ban-ts-comment
+  // @ts-expect-error
   await document.startViewTransition(async () => {
     action()
     await nextTick()
