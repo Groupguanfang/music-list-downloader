@@ -4,6 +4,7 @@ import { useMusicController } from '~/apis/music'
 
 defineOptions({ name: 'PlayListDetail' })
 
+useHead({ title: '歌单详情 - 网易云音乐下崽器' })
 const cookie = useLocalStorage('__naily:music-downloader-cookie__', undefined)
 const route = useRoute()
 const { id } = route.params as { id: string }

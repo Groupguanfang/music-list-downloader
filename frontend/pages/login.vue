@@ -3,6 +3,7 @@ import { CheckQrCodeResponseType } from '#/user.protocol'
 import { match } from 'ts-pattern'
 import { useMusicController } from '~/apis/music'
 
+useHead({ title: '登录 - 网易云音乐下崽器' })
 const router = useRouter()
 const cookie = useLocalStorage('__naily:music-downloader-cookie__', '')
 const musicController = useMusicController()

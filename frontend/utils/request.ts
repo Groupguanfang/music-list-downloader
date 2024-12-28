@@ -7,7 +7,7 @@ export function useRequest(): AxiosRpcClientReturn {
   const settingStore = useSettingStore()
 
   // 如果是electron环境，使用electron rpc
-  if (isClient && window.electron) {
+  if (isClient && globalThis.window.electron) {
     return createElectronClient(
       window.electron.request,
       '__naily:electron:rpc__',

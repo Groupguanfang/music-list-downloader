@@ -4,6 +4,7 @@ import { CurrentAccountResponse } from '#/user.protocol'
 import { useMessage } from 'naive-ui'
 import { useMusicController } from '~/apis/music'
 
+useHead({ title: '我的 - 网易云音乐下崽器' })
 const { t } = useI18n()
 const router = useRouter()
 const message = useMessage()

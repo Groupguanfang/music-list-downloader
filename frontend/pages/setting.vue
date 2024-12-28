@@ -2,8 +2,8 @@
 import { NSelect } from 'naive-ui'
 import { loadLanguageAsync } from '~/modules/i18n'
 
+useHead({ title: '设置 - 网易云音乐下崽器' })
 const { locale } = useI18n()
-
 const settingStore = useSettingStore()
 const { isElectron } = useEnvironment()
 </script>

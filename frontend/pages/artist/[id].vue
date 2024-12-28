@@ -2,6 +2,7 @@
 import { ArtistDetailResponse } from '#/artist.protocol'
 import { useMusicController } from '~/apis/music'
 
+useHead({ title: '歌手详情 - 网易云音乐下崽器' })
 const route = useRoute()
 const { id } = route.params as { id: string }
 

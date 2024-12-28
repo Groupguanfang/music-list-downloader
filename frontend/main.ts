@@ -39,12 +39,15 @@ function getRouterOptions(): RouterOptions {
 export const createApp = ViteSSG(
   App,
   getRouterOptions(),
-  (ctx) => {
+  async (ctx) => {
     // install all modules under `modules/`
-    Object.values(import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eager: true }))
-      .forEach(i => i.install?.(ctx))
+    await Promise.all(Object.values(import.meta.glob<{ install: UserModule }>('./modules/*.ts'))
+      .map(async i => await i()))
+      .then(async i => await Promise.all(i.map(i => i.install?.(ctx))))
 
-    Object.values(import.meta.glob<{ install: UserModule }>('./directives/*.ts', { eager: true }))
-      .forEach(i => i.install?.(ctx))
+    // install all directives under `directives/`
+    await Promise.all(Object.values(import.meta.glob<{ install: UserModule }>('./directives/*.ts'))
+      .map(async i => await i()))
+      .then(async i => await Promise.all(i.map(i => i.install?.(ctx))))
   },
 )

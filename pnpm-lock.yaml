@@ -18,11 +18,11 @@ importers:
         specifier: ^0.0.6
         version: 0.0.6
       '@nailyjs/electron':
-        specifier: ^2.0.14
-        version: 2.0.14
+        specifier: ^2.0.15
+        version: 2.0.15
       '@nailyjs/typeorm':
-        specifier: ^2.0.25
-        version: 2.0.27
+        specifier: ^2.0.28
+        version: 2.0.28
       '@types/js-yaml':
         specifier: ^4.0.9
         version: 4.0.9
@@ -54,7 +54,7 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       naive-ui:
-        specifier: ^2.40.3
+        specifier: ^2.40.4
         version: 2.40.4(vue@3.5.13(typescript@5.7.2))
       nprogress:
         specifier: ^0.2.0
@@ -63,10 +63,10 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0(typescript@5.7.2)(vue@3.5.13(typescript@5.7.2))
       pinia-plugin-persistedstate:
-        specifier: ^4.1.3
+        specifier: ^4.2.0
         version: 4.2.0(pinia@2.3.0(typescript@5.7.2)(vue@3.5.13(typescript@5.7.2)))(rollup@4.29.1)
       ts-pattern:
-        specifier: ^5.5.0
+        specifier: ^5.6.0
         version: 5.6.0
       vue:
         specifier: ^3.5.13
@@ -91,17 +91,17 @@ importers:
         specifier: ^0.15.14
         version: 0.15.14(vue@3.5.13(typescript@5.7.2))
       '@iconify-json/carbon':
-        specifier: ^1.2.4
+        specifier: ^1.2.5
         version: 1.2.5
       '@iconify-json/ph':
-        specifier: ^1.2.1
+        specifier: ^1.2.2
         version: 1.2.2
       '@intlify/unplugin-vue-i18n':
         specifier: ^4.0.0
         version: 4.0.0(rollup@4.29.1)(vue-i18n@9.14.2(vue@3.5.13(typescript@5.7.2)))
       '@nailyjs/backend':
-        specifier: ^2.0.12
-        version: 2.0.14
+        specifier: ^2.0.15
+        version: 2.0.15
       '@nailyjs/config':
         specifier: ^2.0.7
         version: 2.0.7
@@ -112,10 +112,10 @@ importers:
         specifier: ^2.0.6
         version: 2.0.6
       '@nailyjs/rpc':
-        specifier: ^2.0.12
-        version: 2.0.14
+        specifier: ^2.0.15
+        version: 2.0.15
       '@shikijs/markdown-it':
-        specifier: ^1.24.2
+        specifier: ^1.24.4
         version: 1.24.4
       '@types/markdown-it-link-attributes':
         specifier: ^3.0.5
@@ -145,7 +145,7 @@ importers:
         specifier: ^7.0.3
         version: 7.0.3
       cypress:
-        specifier: ^13.16.1
+        specifier: ^13.17.0
         version: 13.17.0
       cypress-vite:
         specifier: ^1.5.0
@@ -172,13 +172,13 @@ importers:
         specifier: ^4.2.1
         version: 4.2.1
       lint-staged:
-        specifier: ^15.2.11
+        specifier: ^15.3.0
         version: 15.3.0
       markdown-it-link-attributes:
         specifier: ^4.0.1
         version: 4.0.1
       pnpm:
-        specifier: ^9.15.0
+        specifier: ^9.15.1
         version: 9.15.1
       reflect-metadata:
         specifier: ^0.2.2
@@ -187,10 +187,10 @@ importers:
         specifier: ^6.0.1
         version: 6.0.1
       rollup:
-        specifier: ^4.28.1
+        specifier: ^4.29.1
         version: 4.29.1
       shiki:
-        specifier: ^1.24.2
+        specifier: ^1.24.4
         version: 1.24.4
       simple-git-hooks:
         specifier: ^2.11.1
@@ -198,6 +198,9 @@ importers:
       taze:
         specifier: ^0.16.9
         version: 0.16.9
+      tsx:
+        specifier: ^4.19.2
+        version: 4.19.2
       typescript:
         specifier: ^5.7.2
         version: 5.7.2
@@ -211,14 +214,14 @@ importers:
         specifier: ^0.18.6
         version: 0.18.6(@nuxt/kit@3.15.0(rollup@4.29.1))(@vueuse/core@11.3.0(vue@3.5.13(typescript@5.7.2)))(rollup@4.29.1)
       unplugin-rpc:
-        specifier: ^2.0.27
-        version: 2.0.29(@types/node@22.10.2)(less@4.2.1)(postcss@8.4.49)(rollup@4.29.1)(terser@5.37.0)(typescript@5.7.2)(yaml@2.6.1)
+        specifier: ^2.0.30
+        version: 2.0.30(@types/node@22.10.2)(less@4.2.1)(postcss@8.4.49)(rollup@4.29.1)(terser@5.37.0)(typescript@5.7.2)(yaml@2.6.1)
       unplugin-vue-components:
         specifier: ^0.27.5
         version: 0.27.5(@babel/parser@7.26.3)(@nuxt/kit@3.15.0(rollup@4.29.1))(rollup@4.29.1)(vue@3.5.13(typescript@5.7.2))
       unplugin-vue-macros:
         specifier: ^2.13.6
-        version: 2.13.6(@vueuse/core@11.3.0(vue@3.5.13(typescript@5.7.2)))(esbuild@0.24.2)(rollup@4.29.1)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.2)(less@4.2.1)(terser@5.37.0))(vue-tsc@2.2.0(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))
+        version: 2.13.6(@vueuse/core@11.3.0(vue@3.5.13(typescript@5.7.2)))(esbuild@0.23.1)(rollup@4.29.1)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.2)(less@4.2.1)(terser@5.37.0))(vue-tsc@2.2.0(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))
       unplugin-vue-markdown:
         specifier: ^0.26.3
         version: 0.26.3(rollup@4.29.1)(vite@5.4.11(@types/node@22.10.2)(less@4.2.1)(terser@5.37.0))
@@ -262,7 +265,7 @@ importers:
         specifier: ^2.1.8
         version: 2.1.8(@types/node@22.10.2)(jsdom@24.1.3)(less@4.2.1)(terser@5.37.0)
       vue-tsc:
-        specifier: ^2.1.10
+        specifier: ^2.2.0
         version: 2.2.0(typescript@5.7.2)
 
   common:
@@ -1883,14 +1886,14 @@ packages:
   '@naiable/utils@0.0.6':
     resolution: {integrity: sha512-nOTQKgpZNvvIPdXcF9XWxjE6xVwHnyZ82IyxVjN0bsqXfjJ6/gYHvLQCdhcX0g11nMYyCFr9Pl3TqABhaBzTbA==}
 
-  '@nailyjs/backend@2.0.14':
-    resolution: {integrity: sha512-NhMBRObVGU0Jc1QEzRe5KvTlmwNhwQyPSWKHEuupVMQFP05RouDv0RQ97oMJ+Oi3FW1FWLhV8OJXNBmoNKeHHw==}
+  '@nailyjs/backend@2.0.15':
+    resolution: {integrity: sha512-SQTF+8x2rQ86/lyWdIqBMhO4EytLQpTzlExlWiJbTVDhHCL1fg4m+s3fXs2oqEF6BZCe/pFI1WBMDaJjnW+xSg==}
 
   '@nailyjs/config@2.0.7':
     resolution: {integrity: sha512-be8SbjNk4VVziwbnRg0svrZeGdkoHl0YoRvgcDJTcvNKNDr3HAZiE+Ldg03ooH96aFs/uyTIYYzTXnB7h9VslA==}
 
-  '@nailyjs/electron@2.0.14':
-    resolution: {integrity: sha512-ZwTFuNDkz6gIgq8FMYswoK0DvTOg64c5d1i7AQAlpIQaMfyO/PiQcYyFyfiTZkODNteBEDmPJMWQE7sed8cU3g==}
+  '@nailyjs/electron@2.0.15':
+    resolution: {integrity: sha512-bG9x/P+NBbsDWDw+vVINmjWJSuBkJc13SJbBDCjMaR5logRWEvhH5/9tM3H85VYC1rLT9UY3ndDiN9C/RpMP7w==}
 
   '@nailyjs/eslint@2.0.8':
     resolution: {integrity: sha512-mW9iO0LTx2WhQXysPNQBfjlUYN98vakwknDoduyNvuyAX/KLj162DCLkBoK5NoISZ0e5ClVnalvq1prPLOao7w==}
@@ -1898,11 +1901,11 @@ packages:
   '@nailyjs/ioc@2.0.6':
     resolution: {integrity: sha512-kRDZZb7pZ2+KFCuYf6q/IJ3eLEIta4j5WycuHnkGIrM8zT3RUFD+5pPd/NeAcye0M8F95jBj5P42Qoc+OlRitg==}
 
-  '@nailyjs/rpc@2.0.14':
-    resolution: {integrity: sha512-qV213rBZOvkZqX+gr67Ffe5NILO0aGlk24r1hCovGQ3r9PVfKXODYFUfJCNtTiF+kqX+DrjpnkwWhCa78QPkoQ==}
+  '@nailyjs/rpc@2.0.15':
+    resolution: {integrity: sha512-okzSCU8ZUtniFvoL4OxIyoVPyFAnqyvn8ru/UqaXdQuy1UmuPqE7av8XZouKELGWlay7PF6Q9yoKBShPciEeWw==}
 
-  '@nailyjs/typeorm@2.0.27':
-    resolution: {integrity: sha512-tMkbbQ0f9r46+ma/gv1B0gwwLtPqBldrOljE/4iW3UlOXGuHudAsBqgw/EH+RB9wRcCPX3lNFU+fl4W0d1a84w==}
+  '@nailyjs/typeorm@2.0.28':
+    resolution: {integrity: sha512-H3/G/JL5NPWqiwN6JpMLITZEdXesm1NQ7gFX+IEq7WcgckWYuq33nuUKLbv0PhQhkYgly37L2C/m9hYCoOZfdg==}
 
   '@napi-rs/wasm-runtime@0.2.6':
     resolution: {integrity: sha512-z8YVS3XszxFTO73iwvFDNpQIzdMmSDTP/mB3E/ucR37V3Sx57hSExcXyMoNwaucWxnsWf4xfbZv0iZ30jr0M4Q==}
@@ -8116,8 +8119,8 @@ packages:
       webpack:
         optional: true
 
-  unplugin-rpc@2.0.29:
-    resolution: {integrity: sha512-0MqwC3zs3pF8eAIQ3Y+txQ3kD4EYrS2nZJL9dDl2o9yXNIFaFlCkhJsQyOUzy+BJLQ5vufLDB9ttEYzwe4LZNg==}
+  unplugin-rpc@2.0.30:
+    resolution: {integrity: sha512-FokLvbr1b4f62cGahjKS6REx3i11LLyEtVSo0Y0v8YEnOwRw+4FrJF5mXfzC9CLd6d2ILSEFekpWIYzuzn15eA==}
 
   unplugin-vue-components@0.27.5:
     resolution: {integrity: sha512-m9j4goBeNwXyNN8oZHHxvIIYiG8FQ9UfmKWeNllpDvhU7btKNNELGPt+o3mckQKuPwrE7e0PvCsx+IWuDSD9Vg==}
@@ -10400,9 +10403,9 @@ snapshots:
 
   '@naiable/utils@0.0.6': {}
 
-  '@nailyjs/backend@2.0.14':
+  '@nailyjs/backend@2.0.15':
     dependencies:
-      '@nailyjs/electron': 2.0.14
+      '@nailyjs/electron': 2.0.15
       '@nailyjs/ioc': 2.0.6
       reflect-metadata: 0.2.2
     transitivePeerDependencies:
@@ -10419,11 +10422,11 @@ snapshots:
     transitivePeerDependencies:
       - magicast
 
-  '@nailyjs/electron@2.0.14':
+  '@nailyjs/electron@2.0.15':
     dependencies:
-      '@nailyjs/backend': 2.0.14
+      '@nailyjs/backend': 2.0.15
       '@nailyjs/ioc': 2.0.6
-      '@nailyjs/rpc': 2.0.14
+      '@nailyjs/rpc': 2.0.15
       electron: 33.2.1
     transitivePeerDependencies:
       - debug
@@ -10461,10 +10464,10 @@ snapshots:
     dependencies:
       reflect-metadata: 0.2.2
 
-  '@nailyjs/rpc@2.0.14':
+  '@nailyjs/rpc@2.0.15':
     dependencies:
-      '@nailyjs/backend': 2.0.14
-      '@nailyjs/electron': 2.0.14
+      '@nailyjs/backend': 2.0.15
+      '@nailyjs/electron': 2.0.15
       '@nailyjs/ioc': 2.0.6
       axios: 1.7.9
       electron: 33.2.1
@@ -10473,9 +10476,9 @@ snapshots:
       - debug
       - supports-color
 
-  '@nailyjs/typeorm@2.0.27':
+  '@nailyjs/typeorm@2.0.28':
     dependencies:
-      '@nailyjs/backend': 2.0.14
+      '@nailyjs/backend': 2.0.15
       '@nailyjs/config': 2.0.7
       '@nailyjs/ioc': 2.0.6
       typeorm: 0.3.20
@@ -18034,20 +18037,20 @@ snapshots:
     transitivePeerDependencies:
       - rollup
 
-  unplugin-combine@1.0.3(esbuild@0.24.2)(rollup@4.29.1)(vite@5.4.11(@types/node@22.10.2)(less@4.2.1)(terser@5.37.0)):
+  unplugin-combine@1.0.3(esbuild@0.23.1)(rollup@4.29.1)(vite@5.4.11(@types/node@22.10.2)(less@4.2.1)(terser@5.37.0)):
     dependencies:
       '@antfu/utils': 0.7.10
       unplugin: 1.16.0
     optionalDependencies:
-      esbuild: 0.24.2
+      esbuild: 0.23.1
       rollup: 4.29.1
       vite: 5.4.11(@types/node@22.10.2)(less@4.2.1)(terser@5.37.0)
 
-  unplugin-rpc@2.0.29(@types/node@22.10.2)(less@4.2.1)(postcss@8.4.49)(rollup@4.29.1)(terser@5.37.0)(typescript@5.7.2)(yaml@2.6.1):
+  unplugin-rpc@2.0.30(@types/node@22.10.2)(less@4.2.1)(postcss@8.4.49)(rollup@4.29.1)(terser@5.37.0)(typescript@5.7.2)(yaml@2.6.1):
     dependencies:
-      '@nailyjs/backend': 2.0.14
+      '@nailyjs/backend': 2.0.15
       '@nailyjs/ioc': 2.0.6
-      '@nailyjs/rpc': 2.0.14
+      '@nailyjs/rpc': 2.0.15
       '@nuxt/kit': 3.15.0(rollup@4.29.1)
       '@nuxt/schema': 3.15.0(rollup@4.29.1)
       '@rollup/pluginutils': 5.1.4(rollup@4.29.1)
@@ -18124,7 +18127,7 @@ snapshots:
       - rollup
       - vue
 
-  unplugin-vue-macros@2.13.6(@vueuse/core@11.3.0(vue@3.5.13(typescript@5.7.2)))(esbuild@0.24.2)(rollup@4.29.1)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.2)(less@4.2.1)(terser@5.37.0))(vue-tsc@2.2.0(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2)):
+  unplugin-vue-macros@2.13.6(@vueuse/core@11.3.0(vue@3.5.13(typescript@5.7.2)))(esbuild@0.23.1)(rollup@4.29.1)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.2)(less@4.2.1)(terser@5.37.0))(vue-tsc@2.2.0(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2)):
     dependencies:
       '@vue-macros/better-define': 1.11.1(rollup@4.29.1)(vue@3.5.13(typescript@5.7.2))
       '@vue-macros/boolean-prop': 0.5.3(rollup@4.29.1)(vue@3.5.13(typescript@5.7.2))
@@ -18156,7 +18159,7 @@ snapshots:
       '@vue-macros/short-vmodel': 1.5.3(rollup@4.29.1)(vue@3.5.13(typescript@5.7.2))
       '@vue-macros/volar': 0.30.8(rollup@4.29.1)(typescript@5.7.2)(vue-tsc@2.2.0(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))
       unplugin: 1.16.0
-      unplugin-combine: 1.0.3(esbuild@0.24.2)(rollup@4.29.1)(vite@5.4.11(@types/node@22.10.2)(less@4.2.1)(terser@5.37.0))
+      unplugin-combine: 1.0.3(esbuild@0.23.1)(rollup@4.29.1)(vite@5.4.11(@types/node@22.10.2)(less@4.2.1)(terser@5.37.0))
       unplugin-vue-define-options: 1.5.3(rollup@4.29.1)(vue@3.5.13(typescript@5.7.2))
       vue: 3.5.13(typescript@5.7.2)
     transitivePeerDependencies:

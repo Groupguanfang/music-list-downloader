@@ -28,6 +28,10 @@ import WebfontDownload from 'vite-plugin-webfont-dl'
 import generateSitemap from 'vite-ssg-sitemap'
 import { dependencies } from './package.json'
 
+let __dirname = globalThis.__dirname
+if (!__dirname)
+  __dirname = new URL('.', import.meta.url).pathname
+
 const config = load(
   fs.existsSync(path.resolve('config.yml')) ? fs.readFileSync(path.resolve('config.yml'), 'utf-8') : '',
 )
@@ -38,7 +42,7 @@ export default defineConfig((env) => {
   else
     console.log('Current mode:', `Serving ${env.command === 'serve' ? 'SSG' : 'Electron'}`)
 
-  const __IS_SSG__ = !!((env.command === 'build' && process.argv[0] === 'vite-ssg'))
+  const __IS_SSG__ = !!((env.command === 'build' && process.argv.some(i => i.includes('vite-ssg'))))
 
   return {
     resolve: {
@@ -49,18 +53,33 @@ export default defineConfig((env) => {
       },
     },
 
-    define: {
-      __IS_SSG__,
-    },
+    define: { __IS_SSG__ },
 
     build: {
       outDir: './dist/frontend',
+      chunkSizeWarningLimit: 1000,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (!id.includes('node_modules'))
+              return
+            if (/pinia/.test(id))
+              return 'common'
+            if (/vue-router/.test(id))
+              return 'page'
+            if (/vue-use|vueuse/.test(id))
+              return 'utils'
+            if (/naive-ui/.test(id))
+              return 'ui'
+          },
+        },
+      },
     },
+
+    base: !__IS_SSG__ ? './' : '/',
 
     // Disable esbuild when using swc
     esbuild: false as const,
-
-    base: __IS_SSG__ ? '/' : './',
 
     plugins: [
       // https://github.com/nailyjs/core
@@ -270,14 +289,7 @@ export default defineConfig((env) => {
       },
       entry: './frontend/main.ts',
       async onFinished() {
-        await buildServer({
-          build: {
-            on: false,
-            viteOptions: {
-              publicDir: false,
-            },
-          },
-        })
+        await buildServer()
         generateSitemap({ outDir: './dist/frontend' })
       },
       async onBeforePageRender(_, __, appCtx) {
