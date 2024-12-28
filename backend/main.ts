@@ -22,6 +22,8 @@ export const app = new RpcBootstrap()
   .use(ConfigPlugin())
 
 // It will be called when environment is production mode
-if (import.meta.env.PROD && env.NODE_ENV === 'production')
+if (import.meta.env.PROD && env.NODE_ENV === 'production') {
+  const port = env.PORT ? Number(env.PORT) : 1000
   // eslint-disable-next-line no-console
-  app.run(1000).then(() => console.log(`Server is running on http://localhost:1000 in ${app.getBaseURL()}`))
+  app.run(port).then(() => console.log(`Server is running on http://localhost:${port} in ${app.getBaseURL()}`))
+}
