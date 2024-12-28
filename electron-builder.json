@@ -39,5 +39,13 @@
     "perMachine": false,
     "allowToChangeInstallationDirectory": true,
     "deleteAppDataOnUninstall": false
+  },
+  "linux": {
+    "target": [
+      "AppImage",
+      "deb",
+      "rpm"
+    ],
+    "artifactName": "${productName}_${version}.${ext}"
   }
 }
