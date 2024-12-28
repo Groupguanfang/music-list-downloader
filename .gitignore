@@ -12,3 +12,4 @@ cypress/downloads
 /data
 dist-electron
 release
+vite.config.ts.timestamp-*
