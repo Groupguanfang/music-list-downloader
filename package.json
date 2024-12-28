@@ -2,7 +2,7 @@
   "name": "music-list-downloader",
   "productName": "网易云音乐下崽器",
   "type": "module",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "private": true,
   "packageManager": "pnpm@9.8.0",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
