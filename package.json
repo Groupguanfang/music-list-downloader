@@ -9,7 +9,7 @@
   "main": "./dist-electron/main.js",
   "scripts": {
     "build": "vite-ssg build",
-    "build:electron": "vite build && electron-builder",
+    "build:electron": "cross-env ELECTRON=true vite build && electron-builder",
     "dev": "vite",
     "dev:electron": "cross-env ELECTRON=true vite",
     "lint": "eslint .",
