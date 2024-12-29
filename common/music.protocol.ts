@@ -6,6 +6,7 @@ import { IUserService } from './user.protocol'
 export const MusicController = 'MusicController'
 export interface VersionResponse {
   version: string
+  type: string
 }
 export interface MusicController {
   readonly user: IUserService

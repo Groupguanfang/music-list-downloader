@@ -44,7 +44,14 @@
     "target": [
       "AppImage",
       "deb",
-      "rpm"
+      "rpm",
+      "snap",
+      "7z",
+      "tar.gz",
+      "freebsd",
+      "zip",
+      "tar.xz",
+      "tar.bz2"
     ],
     "artifactName": "${productName}_${version}.${ext}"
   }

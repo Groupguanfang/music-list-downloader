@@ -48,10 +48,16 @@ setting:
     connected: Connected to the server, version {version}
     name-empty: Server name cannot be empty
     no-exist: Server does not exist
+    no-valid-api-server: Server is not a valid API server, please check if the address is correct
+    connect-failed: Failed to connect to the server
+    cannot-delete-default-server: Cannot delete default server
+    cannot-delete-current-server: Cannot delete current server, please switch server first
   switch-language: Switch Language
   switch-language-desc: Switch language.
   switch-theme: Switch Theme Mode
   switch-theme-desc: Switch theme mode.
+  proxy: Proxy
+  proxy-desc: Set the proxy for the App.
   title: Settings
   use-internal-download-cookie: Use internal download cookie
   use-internal-download-cookie-desc: >-

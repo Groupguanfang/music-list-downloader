@@ -1,8 +1,8 @@
 <script setup lang="tsx">
-import axios, { AxiosResponse } from 'axios'
+import { VersionResponse } from '#/music.protocol'
+import { AxiosError } from 'axios'
 import { useMessage } from 'naive-ui'
-import { match } from 'ts-pattern'
-import { randomId } from '~/utils/random'
+import { typeAssert } from '~/types'
 
 const props = defineProps<{
   index: number
@@ -14,6 +14,7 @@ const props = defineProps<{
 const { t } = useI18n()
 const message = useMessage()
 const settingStore = useSettingStore()
+const apiTestUtils = useApiTestUtils()
 
 const currentServerBackend = computed(() =>
   (settingStore.serverBackends.find(serverBackend => serverBackend.id === settingStore.currentServerBackend) || {}).id
@@ -31,35 +32,29 @@ async function setCurrentServerBackend(index: number) {
     return message.error(t('setting.server-manager-message.name-empty'))
 
   checking.value = true
-  await Promise.allSettled([
-    axios.post(serverBackend.url, {
-      jsonrpc: '2.0',
-      id: randomId(),
-      method: 'MusicController.getVersion',
-    }),
-    new Promise(resolve => setTimeout(resolve, 1000)),
-  ])
-    .then(([res]) => match(res.status).with('fulfilled', () => {
-      const result = res as PromiseFulfilledResult<AxiosResponse>
-      if (result.value.data.error
-        || !result.value.data.result
-        || typeof result.value.data.result !== 'object'
-        || typeof result.value.data.result.version !== 'string') {
-        return message.error('服务器信息返回错误，请检查地址是否正确')
-      }
-      message.success(t('setting.server-manager-message.connected', { version: result.value.data.result.version }))
+  const checkResult = await apiTestUtils.checkAxiosAvailable(serverBackend.url)
+  switch (checkResult) {
+    case false:
+      message.error(t('setting.server-manager-message.no-valid-api-server'))
+      break
+    case checkResult instanceof AxiosError:
+      message.error(t('setting.server-manager-message.connect-failed'))
+      break
+    default:
+      typeAssert<VersionResponse>(checkResult)
+      message.success(t('setting.server-manager-message.connected', { version: checkResult.version }))
       settingStore.currentServerBackend = serverBackend.id
-    }).with('rejected', () => message.error('无法连接到服务器')))
-    .catch(() => message.error('无法连接到服务器'))
-    .finally(() => checking.value = false)
+      break
+  }
+  checking.value = false
 }
 
 function removeServerBackend(index: number) {
   const serverBackend = settingStore.serverBackends[index] || {}
   if (serverBackend.readonly === true)
-    return message.error('无法删除默认服务器')
+    return message.error(t('setting.server-manager-message.cannot-delete-default-server'))
   if (serverBackend.id === settingStore.currentServerBackend)
-    return message.error('无法删除当前正在使用的服务器, 请先切换服务器')
+    return message.error(t('setting.server-manager-message.cannot-delete-current-server'))
 
   props.remove(index)
 }
@@ -80,13 +75,13 @@ function removeServerBackend(index: number) {
           {{ $t('setting.server-manager-action.delete') }}
         </div>
       </button>
-      <button class="action-btn" @click="move('up', index)">
+      <button class="action-btn" :disabled="index === 0" @click="move('up', index)">
         <div i-ph-arrow-up-duotone />
         <div hidden md:block>
           {{ $t('setting.server-manager-action.up') }}
         </div>
       </button>
-      <button class="action-btn" @click="move('down', index)">
+      <button class="action-btn" :disabled="index === settingStore.serverBackends.length - 1" @click="move('down', index)">
         <div i-ph-arrow-down-duotone />
         <div hidden md:block>
           {{ $t('setting.server-manager-action.down') }}
@@ -112,9 +107,3 @@ function removeServerBackend(index: number) {
     </div>
   </div>
 </template>
-
-<style lang="less" scoped>
-.action-btn {
-  @apply btn p3 md:px-5 md:py-2 flex! items-center gap-1 hover:scale-105 active:scale-95 transition-all text-nowrap bg-red-5 color-white;
-}
-</style>

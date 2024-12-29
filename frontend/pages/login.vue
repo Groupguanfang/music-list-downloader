@@ -49,7 +49,7 @@ function check() {
         :src="currentQrCodeBase64" @load="qrCodeLoaded = true"
       >
     </div>
-    <div mt-5 class="fade-in" select-none pointer-events-none>
+    <div mt-2 dark:mt-3 class="fade-in" select-none pointer-events-none>
       {{ $t('login.please-use-client-scan', { clientName: clientNames[locale] }) }}
     </div>
   </div>

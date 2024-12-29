@@ -20,6 +20,6 @@ export class MusicControllerImpl implements MusicController {
   }
 
   async getVersion(): Promise<VersionResponse> {
-    return { version }
+    return { version, type: 'netease' }
   }
 }

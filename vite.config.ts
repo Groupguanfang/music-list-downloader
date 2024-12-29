@@ -11,7 +11,7 @@ import { get } from 'lodash-es'
 import LinkAttributes from 'markdown-it-link-attributes'
 import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-import { buildServer, defaultSwcOptions, swc } from 'unplugin-rpc'
+import { buildServer, defaultSwcOptions, swc as Swc } from 'unplugin-rpc'
 import NailyRpc from 'unplugin-rpc/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
@@ -57,6 +57,7 @@ export default defineConfig((env) => {
     define: { __IS_SSG__ },
 
     build: {
+      target: ['es2019'],
       outDir: './dist/frontend',
       chunkSizeWarningLimit: 1000,
       rollupOptions: {
@@ -70,8 +71,6 @@ export default defineConfig((env) => {
               return 'page'
             if (/vue-use|vueuse/.test(id))
               return 'utils'
-            if (/naive-ui/.test(id))
-              return 'ui'
           },
         },
       },
@@ -97,7 +96,7 @@ export default defineConfig((env) => {
       // Internal swc plugin, fork from https://github.com/unplugin/unplugin-swc
       // - esbuild doesn't support `emitDecoratorMetadata` to reflect types in runtime, so we need it
       // - unplugin-swc has some problems to import, so we forked it and buildin to the rpc plugin
-      swc.vite(defaultSwcOptions),
+      Swc.vite(defaultSwcOptions),
 
       VueMacros({
         plugins: {
@@ -240,7 +239,7 @@ export default defineConfig((env) => {
             },
 
             plugins: [
-              swc.vite(defaultSwcOptions),
+              Swc.vite(defaultSwcOptions),
             ],
 
             esbuild: false,
@@ -257,7 +256,7 @@ export default defineConfig((env) => {
           entry: './app/preload.ts',
           vite: {
             plugins: [
-              swc.vite(defaultSwcOptions),
+              Swc.vite(defaultSwcOptions),
             ],
 
             esbuild: false,

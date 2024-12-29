@@ -23,4 +23,12 @@ export enum CommunicationChannel {
    * 获取平台
    */
   GetPlatform = 'mld:get-platform',
+  /**
+   * 设置代理
+   */
+  SetProxy = 'mld:set-proxy',
+  /**
+   * 取消代理
+   */
+  UnsetProxy = 'mld:unset-proxy',
 }

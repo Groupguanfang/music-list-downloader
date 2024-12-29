@@ -1,3 +1,5 @@
 internalServer:
   # 配置编译时服务器的默认地址。如果不配置默认为`/_api`
   baseURL: /_api
+# 配置electron内部通信通道的令牌
+handlerToken: __handlerToken__

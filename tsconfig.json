@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2019",
     "jsx": "preserve",
     "lib": ["DOM", "ESNext"],
     "emitDecoratorMetadata": true,

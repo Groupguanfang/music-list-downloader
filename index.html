@@ -15,9 +15,34 @@
       })()
     </script>
   </head>
+  <style>
+    ._loading-container {
+      position: fixed;
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+    }
+  </style>
   <body class="font-sans">
-    <div id="app"></div>
+    <div id="app">
+      <div class="_loading-container">
+        <div i-ph-spinner-ball-duotone animate-spin size-10 />
+      </div>
+    </div>
     <script type="module" src="/frontend/main.ts"></script>
-    <noscript> This website requires JavaScript to function properly. Please enable JavaScript to continue. </noscript>
+    <noscript> 
+      <div class="_loading-container">
+        This website requires JavaScript to function properly. Please enable JavaScript to continue.
+        <br />
+        下崽器需要 JavaScript 才能正常工作。请启用 JavaScript 以继续。
+      </div>
+    </noscript>
   </body>
 </html>

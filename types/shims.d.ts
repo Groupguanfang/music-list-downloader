@@ -4,6 +4,9 @@ declare interface GlobalElectron {
   minimizeWindow: () => void
   maximizeWindow: () => void
   getPlatform: () => Promise<NodeJS.Platform>
+  setProxy: (proxy: string) => void
+  closeProxy: () => void
+  getProxy: () => Promise<string>
 }
 
 declare interface Window {

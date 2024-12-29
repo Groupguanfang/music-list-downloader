@@ -9,6 +9,7 @@ export interface ServerBackend {
   url: string
   readonly?: boolean
   id: string
+  type: 'netease'
 }
 
 export const useSettingStore = defineStore('__naily:music-downloader-setting-store__', () => {
@@ -22,6 +23,7 @@ export const useSettingStore = defineStore('__naily:music-downloader-setting-sto
       url: defaultServerBackends,
       readonly: true,
       id: randomId(),
+      type: 'netease',
     },
   ])
   const currentServerBackend = ref<string>(serverBackends.value[0].id)

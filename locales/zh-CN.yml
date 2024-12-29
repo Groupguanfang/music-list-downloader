@@ -46,10 +46,16 @@ setting:
     connected: 已连接到服务器, 版本号:{version}
     name-empty: 服务器名称不能为空
     no-exist: 服务器不存在
+    no-valid-api-server: 服务器不是一个有效的API服务器，请检查地址是否正确
+    connect-failed: 无法连接到服务器
+    cannot-delete-default-server: 无法删除默认服务器
+    cannot-delete-current-server: 无法删除当前正在使用的服务器, 请先切换服务器
   switch-language: 切换语言
   switch-language-desc: 切换语言。
   switch-theme: 切换主题模式
   switch-theme-desc: 切换主题模式。
+  proxy: 代理
+  proxy-desc: 设置App内代理。
   title: 设置
   use-internal-download-cookie: 是否使用网站内置cookie下载音乐
   use-internal-download-cookie-desc: 如果网站管理员配置了内置的cookie，并且此开关为开启状态，则下载音乐时会使用该内置cookie下载音乐。

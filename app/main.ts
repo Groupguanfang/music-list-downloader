@@ -44,6 +44,14 @@ app.whenReady().then(async () => {
       type: 'invoke',
       handler: () => process.platform,
     },
+    [CommunicationChannel.SetProxy]: {
+      type: 'on',
+      handler: (_e, proxy: string) => win.webContents.session.setProxy({ proxyRules: proxy }),
+    },
+    [CommunicationChannel.UnsetProxy]: {
+      type: 'on',
+      handler: () => win.webContents.session.setProxy({}),
+    },
   })
 
   app.setAboutPanelOptions({
