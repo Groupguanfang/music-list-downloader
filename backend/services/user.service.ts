@@ -19,6 +19,10 @@ export class UserService implements IUserService {
     return {
       base64: qrCodeData.qrimg as string,
       key: qrCodeKeyData.unikey as string | number,
+      name: {
+        'zh-CN': '网易云App',
+        'english': 'Netease Cloud Music App',
+      },
     }
   }
 

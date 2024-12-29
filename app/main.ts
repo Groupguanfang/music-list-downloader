@@ -1,9 +1,14 @@
 import path from 'node:path'
 import process from 'node:process'
 import { ElectronAdapter } from '@nailyjs/electron'
-import { app, BrowserWindow, ipcMain, Menu } from 'electron'
+import { app, BrowserWindow, Menu } from 'electron'
+import { load } from 'js-yaml'
+import { get } from 'lodash-es'
 import { app as rpc } from '../backend/main'
+import config from '../config.yml?raw'
 import { author, productName, version } from '../package.json'
+import { CommunicationChannel } from './channel'
+import { defineChannel } from './impl'
 
 let __dirname: string = globalThis.__dirname
 if (!__dirname)
@@ -17,13 +22,29 @@ app.whenReady().then(async () => {
     frame: false,
     webPreferences: {
       preload: path.resolve(decodeURIComponent(__dirname), './preload.cjs'),
+      // 关闭web安全策略，让前端完全掌控下载内容
+      webSecurity: false,
     },
   })
 
-  ipcMain.on('mld:close-window', () => win.close())
-  ipcMain.on('mld:minimize-window', () => win.minimize())
-  ipcMain.on('mld:maximize-window', () => win.maximize())
-  ipcMain.handle('mld:get-platform', () => process.platform)
+  defineChannel({
+    [CommunicationChannel.CloseWindow]: {
+      type: 'on',
+      handler: () => win.close(),
+    },
+    [CommunicationChannel.MinimizeWindow]: {
+      type: 'on',
+      handler: () => win.minimize(),
+    },
+    [CommunicationChannel.MaximizeWindow]: {
+      type: 'on',
+      handler: () => win.maximize(),
+    },
+    [CommunicationChannel.GetPlatform]: {
+      type: 'invoke',
+      handler: () => process.platform,
+    },
+  })
 
   app.setAboutPanelOptions({
     applicationName: productName,
@@ -68,7 +89,11 @@ app.whenReady().then(async () => {
   )
 
   // 设置naily后端适配器为 Electron
-  await rpc.setBackendAdapter(ElectronAdapter)
+  const executor = rpc.setBackendAdapter(ElectronAdapter)
+  const electronAdapter = rpc.getBackendAdapter() as ElectronAdapter
+  electronAdapter.setHandlerToken(get(load(config), 'handlerToken', CommunicationChannel.RPC))
+
+  executor.setBackendAdapter(electronAdapter)
     .getRpcMethodExecutor()
     .setBackendAdapter(rpc.getBackendAdapter() as ElectronAdapter)
     .setup()

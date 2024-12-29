@@ -1,2 +1,3 @@
 internalServer:
+  # 配置编译时服务器的默认地址。如果不配置默认为`/_api`
   baseURL: /_api

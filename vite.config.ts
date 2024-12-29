@@ -50,6 +50,7 @@ export default defineConfig((env) => {
         '~/': `${path.resolve(__dirname, 'frontend')}/`,
         '#/': `${path.resolve(__dirname, 'common')}/`,
         '@/': `${path.resolve(__dirname, 'backend')}/`,
+        '$/': `${path.resolve(__dirname, 'app')}/`,
       },
     },
 
@@ -234,6 +235,7 @@ export default defineConfig((env) => {
                 '~/': `${path.resolve(__dirname, 'frontend')}/`,
                 '#/': `${path.resolve(__dirname, 'common')}/`,
                 '@/': `${path.resolve(__dirname, 'backend')}/`,
+                '$/': `${path.resolve(__dirname, 'app')}/`,
               },
             },
 

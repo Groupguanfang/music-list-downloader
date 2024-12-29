@@ -26,6 +26,8 @@ play-list-detail:
     play: 播放
     push-to-play-list: 添加到播放列表
   replace-current-play-list: 播放全部
+login:
+  please-use-client-scan: 请使用{clientName}扫码后登录
 setting:
   checking-server: 正在检查服务器是否可用...
   server-manager: 服务器管理

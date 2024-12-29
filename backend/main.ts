@@ -11,6 +11,8 @@ import config from '../config.yml?raw'
 
 // Import all controllers
 import.meta.glob('./controllers/**/*.controller.ts', { eager: true })
+// Import all filters
+import.meta.glob('./errors/**/*.filter.ts', { eager: true })
 
 const result: any = load(config || '')
 

@@ -30,7 +30,7 @@ export const useSettingStore = defineStore('__naily:music-downloader-setting-sto
   /**
    * 同步配置文件中的内置服务器地址
    */
-  function syncDefaultServerBackends() {
+  function syncDefaultServerBackendsInConfig() {
     const currentDefaultServerBackends = computed(() => serverBackends.value.find(backend => backend.readonly === true))
     const currentDefaultServerBackendsIndex = serverBackends.value.findIndex(backend => backend.readonly === true)
     if (!currentDefaultServerBackends.value)
@@ -38,7 +38,7 @@ export const useSettingStore = defineStore('__naily:music-downloader-setting-sto
     if (currentDefaultServerBackends.value.url !== defaultServerBackends)
       serverBackends.value[currentDefaultServerBackendsIndex].url = defaultServerBackends
   }
-  onMounted(() => syncDefaultServerBackends())
+  onMounted(syncDefaultServerBackendsInConfig)
 
   return {
     useInternalDownloadCookie,

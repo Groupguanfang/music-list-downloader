@@ -3,6 +3,7 @@ import { Idable, Nameable, RequestBase } from './types'
 export interface CreateQrCodeResponse {
   base64: string
   key: string | number
+  name: Record<string, string>
   [index: string]: any
 }
 

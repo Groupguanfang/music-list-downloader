@@ -1,5 +1,5 @@
 declare interface GlobalElectron {
-  request: (channel: string, ...args: any[]) => Promise<any>
+  request: import('@nailyjs/rpc/electron').InvokeFn
   closeWindow: () => void
   minimizeWindow: () => void
   maximizeWindow: () => void

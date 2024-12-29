@@ -26,6 +26,8 @@ play-list-detail:
     play: Play
     push-to-play-list: Push to playlist
   replace-current-play-list: Replace the current playlist
+login:
+  please-use-client-scan: Please use {clientName} to scan and login
 setting:
   checking-server: Checking if the server is available...
   server-manager: Server Manager

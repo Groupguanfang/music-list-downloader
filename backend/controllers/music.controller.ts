@@ -15,6 +15,10 @@ export class MusicControllerImpl implements MusicController {
     public readonly song: SongService,
   ) {}
 
+  async proxyRequest(url: string): Promise<Response> {
+    return await fetch(url)
+  }
+
   async getVersion(): Promise<VersionResponse> {
     return { version }
   }

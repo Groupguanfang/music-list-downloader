@@ -10,7 +10,8 @@
     "paths": {
       "~/*": ["./frontend/*"],
       "#/*": ["./common/*"],
-      "@/*": ["./backend/*"]
+      "@/*": ["./backend/*"],
+      "$/*": ["./app/*"]
     },
     "resolveJsonModule": true,
     "types": [
