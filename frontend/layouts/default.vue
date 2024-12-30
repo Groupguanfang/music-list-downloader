@@ -15,5 +15,6 @@
         </Transition>
       </template>
     </RouterView>
+    <MobileFooter block md:hidden />
   </main>
 </template>

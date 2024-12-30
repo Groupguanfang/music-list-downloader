@@ -10,6 +10,7 @@ declare module 'vue' {
     ArtistCard: typeof import('./../frontend/components/artist-card.vue')['default']
     DefaultHeader: typeof import('./../frontend/components/default-header.vue')['default']
     FormLabel: typeof import('./../frontend/components/form-label.vue')['default']
+    MobileFooter: typeof import('./../frontend/components/mobile-footer.vue')['default']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NDivider: typeof import('naive-ui')['NDivider']
     NDynamicInput: typeof import('naive-ui')['NDynamicInput']
