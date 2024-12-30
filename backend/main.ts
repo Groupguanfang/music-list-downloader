@@ -1,6 +1,7 @@
 // backend/main.ts
 /// <reference types="vite/client" />
 
+import console from 'node:console'
 import { env } from 'node:process'
 import { NodeAdapter } from '@nailyjs/backend/node-adapter'
 import { ConfigPlugin } from '@nailyjs/config'
@@ -26,6 +27,5 @@ export const app = new RpcBootstrap()
 // It will be called when environment is production mode
 if (import.meta.env.PROD && env.NODE_ENV === 'production') {
   const port = env.PORT ? Number(env.PORT) : 1000
-  // eslint-disable-next-line no-console
   app.run(port).then(() => console.log(`Server is running on http://localhost:${port} in ${app.getBaseURL()}`))
 }

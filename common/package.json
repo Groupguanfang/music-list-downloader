@@ -1,8 +1,8 @@
 {
-  "name": "netease-music-list-downloader",
+  "name": "onemusic",
   "type": "module",
   "version": "0.0.1",
-  "description": "TypeScript API protocol for netease music list downloader",
+  "description": "Common API protocol for all music services.",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

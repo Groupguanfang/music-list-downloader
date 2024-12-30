@@ -44,6 +44,7 @@ setting:
   server-manager-message:
     address-empty: 服务器地址不能为空
     connected: 已连接到服务器, 版本号:{version}
+    electron-connected: 已连接到App内置服务器, 版本号:{version}
     name-empty: 服务器名称不能为空
     no-exist: 服务器不存在
     no-valid-api-server: 服务器不是一个有效的API服务器，请检查地址是否正确

@@ -1,10 +1,16 @@
 import { Filter } from '@nailyjs/ioc'
 import { RpcErrorHandler, RpcFilterContext } from '@nailyjs/rpc'
-import { AxiosError } from 'axios'
 
-@Filter(AxiosError)
+@Filter()
 export class AxiosRpcFilter implements RpcErrorHandler {
-  catch(error: AxiosError, ctx: RpcFilterContext) {
-    ctx.sendError(error.response?.status ?? 500, error.message, error.response?.data)
+  catch(error: any, ctx: RpcFilterContext) {
+    if (error?.status && error?.body) {
+      ctx.sendError(error?.status ?? 500, error?.body?.message, JSON.parse(JSON.stringify(error)))
+    }
+    else {
+      ctx.sendError(500, error?.message, JSON.parse(JSON.stringify(error)))
+    }
+
+    console.error('[Request Error]', JSON.stringify(error))
   }
 }

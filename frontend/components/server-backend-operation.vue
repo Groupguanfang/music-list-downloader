@@ -15,6 +15,7 @@ const { t } = useI18n()
 const message = useMessage()
 const settingStore = useSettingStore()
 const apiTestUtils = useApiTestUtils()
+const { isElectron } = useEnvironment()
 
 const currentServerBackend = computed(() =>
   (settingStore.serverBackends.find(serverBackend => serverBackend.id === settingStore.currentServerBackend) || {}).id
@@ -32,6 +33,18 @@ async function setCurrentServerBackend(index: number) {
     return message.error(t('setting.server-manager-message.name-empty'))
 
   checking.value = true
+  if (serverBackend.readonly && isElectron.value) {
+    const checkResult = await apiTestUtils.checkElectronAvailable()
+    if (!checkResult) {
+      message.error(t('setting.server-manager-message.connect-failed'))
+    }
+    else {
+      message.success(t('setting.server-manager-message.electron-connected', { version: checkResult.version }))
+    }
+    checking.value = false
+    return
+  }
+
   const checkResult = await apiTestUtils.checkAxiosAvailable(serverBackend.url)
   switch (checkResult) {
     case false:

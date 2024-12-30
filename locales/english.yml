@@ -46,6 +46,7 @@ setting:
   server-manager-message:
     address-empty: Server address cannot be empty
     connected: Connected to the server, version {version}
+    electron-connected: Connected to the App builtin server, version {version}
     name-empty: Server name cannot be empty
     no-exist: Server does not exist
     no-valid-api-server: Server is not a valid API server, please check if the address is correct

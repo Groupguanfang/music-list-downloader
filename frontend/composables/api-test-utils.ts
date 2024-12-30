@@ -15,6 +15,8 @@ export interface JsonRpcSuccessResponse<T> {
 }
 
 export function useApiTestUtils(interval: number = 1000) {
+  const { isElectron } = useEnvironment()
+
   /**
    * 使用axios检测服务器是否可用
    *
@@ -63,10 +65,10 @@ export function useApiTestUtils(interval: number = 1000) {
    * @returns - `false` 服务器不可用
    */
   async function checkElectronAvailable(): Promise<VersionResponse | false> {
-    if (!globalThis.window.electron || typeof globalThis.window.electron.request !== 'function')
+    if (!isElectron.value || typeof globalThis.window.electron.request !== 'function')
       return false
 
-    const versionResponse: JsonRpcSuccessResponse<VersionResponse> = await globalThis.window.electron.request(
+    let versionResponse = await globalThis.window.electron.request(
       get(load(config), 'handlerToken', CommunicationChannel.RPC),
       {
         jsonrpc: '2.0',
@@ -74,6 +76,8 @@ export function useApiTestUtils(interval: number = 1000) {
         method: 'MusicController.getVersion',
       },
     )
+    versionResponse = JSON.parse(versionResponse)
+    typeAssert<JsonRpcSuccessResponse<VersionResponse>>(versionResponse)
 
     if (typeof versionResponse?.result?.version === 'string')
       return versionResponse?.result
