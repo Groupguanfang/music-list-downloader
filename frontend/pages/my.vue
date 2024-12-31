@@ -20,6 +20,7 @@ const songLists = ref<Partial<UserSongListsResponse>>({
   songLists: [],
 })
 
+const avatarIsLoaded = ref(false)
 async function requestAccountInfo() {
   await musicController.user.getCurrentAccount({ cookie: cookie.value })
     .then(response => result.value = response)
@@ -35,8 +36,6 @@ async function requestAccountInfo() {
 }
 if (cookie.value)
   requestAccountInfo()
-
-const avatarIsLoaded = ref(false)
 </script>
 
 <script lang="tsx">
@@ -44,24 +43,28 @@ export default { name: 'My' }
 </script>
 
 <template>
-  <div flex="~ col md:row gap-5 md:gap-10" pt5>
-    <aside flex="~ md:col gap-5 items-center md:items-start" min-w-60>
-      <NSkeleton v-if="!avatarIsLoaded" transition-all size-20 md:size-60 rounded-full mb-4 />
-      <img v-show="avatarIsLoaded" transition-all size-20 md:size-60 rounded-full mb-4 :src="result.avatar" @load="avatarIsLoaded = true">
-      <div flex="~ col">
-        <!-- eslint-disable-next-line -->
-        <h1 font="size-lg md:size-2xl bold">{{ result.name }}</h1>
-        <!-- eslint-disable-next-line -->
-        <p op-60>{{ result.signature }}</p>
+  <div select-none flex="~ col gap-5 md:gap-10" pt5>
+    <div flex="~ col md:row md:items-center justify-between gap-2">
+      <!-- Left -->
+      <div flex="~ items-center gap-2">
+        <NSkeleton v-if="!avatarIsLoaded" transition-all size-18 md:size-15 rounded-full />
+        <img v-show="avatarIsLoaded" transition-all size-18 md:size-15 rounded-full :src="result.avatar" @load="avatarIsLoaded = true">
+        <div flex="~ col">
+          <h1 font="size-lg md:size-3xl bold">{{ result.name }}</h1>
+          <p op-60 block md:hidden>{{ result.signature }}</p>
+        </div>
       </div>
-    </aside>
+      <!-- Right -->
+      <p op-60 hidden md:block>{{ result.signature }}</p>
+    </div>
 
     <div flex="~ col gap-4" w-full>
-      <h2 font="size-lg md:size-2xl bold">
+      <h2 font="size-lg md:size-2xl bold" flex="~ items-center gap-2">
+        <div i-ph-list-numbers-duotone hidden md:block />
         {{ $t('my.music-list') }}
       </h2>
 
-      <div columns-2 md:columns-2 lg:columns-4 xl:columns-5 gap-4>
+      <div columns-2 md:columns-3 lg:columns-4 xl:columns-6 gap-4>
         <SongListCard
           v-for="(item, index) in songLists.songLists" v-bind="item" :key="index" break-inside-avoid
           @click="$router.push(`/play-list/${item.id}`)"

@@ -10,12 +10,24 @@ const emit = defineEmits<{
 const isLoaded = ref(false)
 const cardRef = ref<HTMLImageElement | null>(null)
 const { width: imageWidth } = useElementBounding(cardRef)
+const { width: windowWidth } = useWindowSize()
+
+const imageParamSize = computed<`${number}y${number}`>(() => {
+  if (windowWidth.value < 768)
+    return '200y200'
+  else if (windowWidth.value < 1024)
+    return '300y300'
+  else if (windowWidth.value < 1280)
+    return '400y400'
+  else
+    return '500y500'
+})
 </script>
 
 <template>
   <div ref="cardRef" class="song-list-card" mb-4 relative cursor-pointer @click="(e) => emit('click', e, props)">
     <NSkeleton v-if="!isLoaded" w-full h-full rounded-lg :style="{ 'min-height': `${imageWidth}px` }" />
-    <img v-show="isLoaded" rounded-lg w-full h-full transition-all class="cover" :src="`${props.cover}?param=200y200`" alt="cover" @load="isLoaded = true">
+    <img v-show="isLoaded" rounded-lg w-full h-full transition-all class="cover" :src="`${props.cover}?${imageParamSize}`" alt="cover" @load="isLoaded = true">
     <div
       class="layer hidden! md:flex!" text="white center"
       p3 select-none transition-all op-0 absolute top-0 left-0 w-full h-full scale-90 hover:scale-100

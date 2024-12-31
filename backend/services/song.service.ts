@@ -15,7 +15,7 @@ export class SongService implements ISongService {
 
     const [detailResponse, urlResponse] = await Promise.all([
       Netease.song_detail({
-        ids: request.id as string,
+        ids: request.id.toString(),
         cookie: request.useInternalCookieIfExist === true ? cookie.value : request.cookie,
       }),
       Netease.song_url({

@@ -12,6 +12,15 @@ home:
   top-artists: Top Artists
 my:
   music-list: My Music List
+  download-list: Download List
+  download-status:
+    pending: Pending
+    downloading: Downloading
+    finished: Finished
+    failed: Failed
+    compressing: Compressing
+    pre-compressing: Pre-compressing
+    pre-downloading: URL request successful, waiting for download
 nav:
   home: Home
   music-player: Music Player
@@ -25,6 +34,7 @@ play-list-detail:
     download: Download
     play: Play
     push-to-play-list: Push to playlist
+    start-download: Download task started
   replace-current-play-list: Replace the current playlist
 login:
   please-use-client-scan: Please use {clientName} to scan and login

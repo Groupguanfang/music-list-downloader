@@ -7,9 +7,9 @@ defineProps<{
 
 <template>
   <div>
-    <h2 select-none text-lg font-bold mb-1>
+    <h3 select-none text-lg font-bold mb-1>
       {{ label }}
-    </h2>
+    </h3>
     <div select-none op-70>
       {{ description }}
     </div>

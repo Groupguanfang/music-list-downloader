@@ -16,6 +16,12 @@ const footerButtons = ref([
     selected: computed(() => route.path === '/my'),
     label: t('nav.personal'),
   },
+  {
+    icon: 'i-ph-gear-duotone',
+    onClick: () => router.push('/setting'),
+    selected: computed(() => route.path === '/setting'),
+    label: t('nav.setting'),
+  },
 ])
 </script>
 

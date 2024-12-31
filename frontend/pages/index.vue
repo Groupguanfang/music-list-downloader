@@ -27,19 +27,19 @@ function handleArtistCardClick(e: MouseEvent, item: PersonalizedArtistsResponseR
 
 <template>
   <div>
-    <h1 pointer-events-none select-none font-extrabold text="size-3xl md:size-2xl" flex="~ items-center gap-2">
+    <h2 pointer-events-none select-none font-extrabold text="size-3xl md:size-2xl" flex="~ items-center gap-2">
       <div i-ph-list-numbers-duotone hidden md:block />
       {{ $t('home.popular-music-list') }}
-    </h1>
+    </h2>
 
     <div columns-2 md:columns-4 lg:columns-5 xl:columns-6 gap-4 mt-5>
       <SongListCard v-for="(item, index) in personalizedSongListResult" v-bind="item" :key="index" break-inside-avoid @click="handleSongListCardClick" />
     </div>
 
-    <h1 mt-10 pointer-events-none select-none font-extrabold text="size-3xl md:size-2xl" flex="~ items-center gap-2">
+    <h2 mt-10 pointer-events-none select-none font-extrabold text="size-3xl md:size-2xl" flex="~ items-center gap-2">
       <div i-ph-user-duotone hidden md:block />
       {{ $t('home.top-artists') }}
-    </h1>
+    </h2>
 
     <div grid="~ cols-2 sm:cols-3 md:cols-4 xl:cols-6" gap-4 mt-5>
       <ArtistCard v-for="(item, index) in personalizedArtistsResult" v-bind="item" :key="index" @click="handleArtistCardClick" />

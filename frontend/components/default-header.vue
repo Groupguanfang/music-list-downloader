@@ -7,6 +7,7 @@ const { width: windowWidth } = useWindowSize()
 const { toggleLocales } = useToggleLocale()
 const { isElectron, platform } = useEnvironment()
 const route = useRoute()
+const downloadPanel = useDownloadPanel()
 
 const headerRef = ref<HTMLElement | null>(null)
 
@@ -50,6 +51,11 @@ const leftButton = computed(() => [
     icon: 'i-ph-music-note-duotone',
     text: t('nav.music-player'),
     onClick: () => void 0,
+  },
+  {
+    icon: 'i-ph-arrow-down-duotone',
+    text: t('my.download-list'),
+    onClick: () => downloadPanel.toggle(),
   },
 ])
 const rightButton = computed(() => [
