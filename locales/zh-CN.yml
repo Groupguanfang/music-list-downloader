@@ -13,14 +13,8 @@ home:
 my:
   music-list: 我的歌单
   download-list: 下载管理
-  download-status:
-    pending: 等待下载
-    downloading: 下载中
-    finished: 下载完成
-    failed: 下载失败
-    compressing: 压缩中
-    pre-compressing: 等待最终压缩
-    pre-downloading: URL请求成功，等待下载
+  download-zip: 压缩包管理
+  download-file: 文件管理
 nav:
   home: 主页
   music-player: 进入播放器
@@ -29,7 +23,7 @@ nav:
   switch-language: 切换语言
   switch-theme: 切换主题
 play-list-detail:
-  download-all: 下载
+  download-all: 添加到下载列表
   item-action:
     download: 下载
     play: 播放

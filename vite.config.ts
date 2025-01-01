@@ -6,6 +6,7 @@ import { setup } from '@css-render/vue3-ssr'
 import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 import Shiki from '@shikijs/markdown-it'
 import Vue from '@vitejs/plugin-vue'
+import VueJsx from '@vitejs/plugin-vue-jsx'
 import { load } from 'js-yaml'
 import { get } from 'lodash-es'
 import LinkAttributes from 'markdown-it-link-attributes'
@@ -21,6 +22,7 @@ import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig } from 'vite'
 import Electron from 'vite-plugin-electron'
+import Inspect from 'vite-plugin-inspect'
 import { VitePWA } from 'vite-plugin-pwa'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import Layouts from 'vite-plugin-vue-layouts'
@@ -82,6 +84,8 @@ export default defineConfig((env) => {
     esbuild: false as const,
 
     plugins: [
+      Inspect(),
+
       // https://github.com/nailyjs/core
       NailyRpc({
         build: {
@@ -103,6 +107,7 @@ export default defineConfig((env) => {
           vue: Vue({
             include: [/\.vue$/, /\.md$/],
           }),
+          vueJsx: VueJsx(),
         },
       }),
 

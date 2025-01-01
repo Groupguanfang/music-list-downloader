@@ -2,7 +2,10 @@
   "compilerOptions": {
     "target": "ES2019",
     "jsx": "preserve",
-    "lib": ["DOM", "ESNext"],
+    "jsxFactory": "h",
+    "jsxImportSource": "vue",
+    "lib": ["DOM", "ESNext", "DOM.Iterable"],
+    "moduleDetection": "force",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "module": "ESNext",

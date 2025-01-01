@@ -6,6 +6,8 @@
 // biome-ignore lint: disable
 export {}
 declare global {
+  const DownloadStatus: typeof import('../frontend/stores/download')['DownloadStatus']
+  const DownloadStore: typeof import('../frontend/stores/download')['DownloadStore']
   const EffectScope: typeof import('vue')['EffectScope']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
@@ -159,6 +161,7 @@ declare global {
   const useDevicesList: typeof import('@vueuse/core')['useDevicesList']
   const useDisplayMedia: typeof import('@vueuse/core')['useDisplayMedia']
   const useDocumentVisibility: typeof import('@vueuse/core')['useDocumentVisibility']
+  const useDownloadDialog: typeof import('../frontend/composables/download-dialog')['useDownloadDialog']
   const useDownloadPanel: typeof import('../frontend/composables/download-panel')['useDownloadPanel']
   const useDownloadStore: typeof import('../frontend/stores/download')['useDownloadStore']
   const useDraggable: typeof import('@vueuse/core')['useDraggable']
@@ -470,6 +473,7 @@ declare module 'vue' {
     readonly useDevicesList: UnwrapRef<typeof import('@vueuse/core')['useDevicesList']>
     readonly useDisplayMedia: UnwrapRef<typeof import('@vueuse/core')['useDisplayMedia']>
     readonly useDocumentVisibility: UnwrapRef<typeof import('@vueuse/core')['useDocumentVisibility']>
+    readonly useDownloadDialog: UnwrapRef<typeof import('../frontend/composables/download-dialog')['useDownloadDialog']>
     readonly useDownloadPanel: UnwrapRef<typeof import('../frontend/composables/download-panel')['useDownloadPanel']>
     readonly useDownloadStore: UnwrapRef<typeof import('../frontend/stores/download')['useDownloadStore']>
     readonly useDraggable: UnwrapRef<typeof import('@vueuse/core')['useDraggable']>

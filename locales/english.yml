@@ -13,14 +13,7 @@ home:
 my:
   music-list: My Music List
   download-list: Download List
-  download-status:
-    pending: Pending
-    downloading: Downloading
-    finished: Finished
-    failed: Failed
-    compressing: Compressing
-    pre-compressing: Pre-compressing
-    pre-downloading: URL request successful, waiting for download
+  download-zip: Download Zip
 nav:
   home: Home
   music-player: Music Player
@@ -29,7 +22,7 @@ nav:
   switch-language: Switch Language
   switch-theme: Switch Theme
 play-list-detail:
-  download-all: Download
+  download-all: Add to download list
   item-action:
     download: Download
     play: Play

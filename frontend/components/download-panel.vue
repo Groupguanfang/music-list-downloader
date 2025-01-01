@@ -1,19 +1,31 @@
 <script setup lang="tsx">
-const downloadStore = useDownloadStore()
+import { NTabPane, NTabs } from 'naive-ui'
+
 const downloadPanel = useDownloadPanel()
+const currentTab = ref<'zip' | 'file'>('zip')
+const { createNewZipDialog } = useDownloadDialog()
 </script>
 
 <template>
-  <NDrawer v-model:show="downloadPanel.isOpen" width="50%">
-    <NDrawerContent :title="$t('my.download-list')">
-      <div w-full class="flex col gap-4 justify-center">
-        <div v-for="(belong, belongIndex) in downloadStore.belongs" :key="belongIndex" w-full flex="~ col gap-4">
-          <h3 font-size-lg>
-            {{ belong }}
-          </h3>
-          <TaskCard v-for="(task, taskIndex) in downloadStore.getBelongTasks(belong)" :key="taskIndex" :task="task" />
-        </div>
-      </div>
+  <NDrawer v-model:show="downloadPanel.isOpen" default-width="50%" resizable>
+    <NDrawerContent>
+      <NTabs v-model:value="currentTab" default-value="zip" type="card">
+        <template #suffix>
+          <NButton v-if="currentTab === 'zip'" size="small" @click="createNewZipDialog">新建压缩包</NButton>
+        </template>
+        <NTabPane name="zip" :tab="$t('my.download-zip')">
+          <DownloadPanelZip />
+        </NTabPane>
+        <NTabPane name="file" :tab="$t('my.download-file')">
+          开发中
+        </NTabPane>
+      </NTabs>
     </NDrawerContent>
   </NDrawer>
 </template>
+
+<style>
+.n-drawer {
+  backdrop-filter: blur(10px);
+}
+</style>

@@ -1,6 +1,5 @@
 <script setup lang="tsx">
 import { SongListDetailResponse } from '#/song-list.protocol'
-import { useMessage } from 'naive-ui'
 import { useMusicController } from '~/apis/music'
 
 defineOptions({ name: 'PlayListDetail' })
@@ -8,8 +7,6 @@ defineOptions({ name: 'PlayListDetail' })
 useHead({ title: '歌单详情 - 网易云音乐下崽器' })
 const cookie = useLocalStorage('__naily:music-downloader-cookie__', undefined)
 const route = useRoute()
-const message = useMessage()
-const { t } = useI18n()
 const { id } = route.params as { id: string }
 
 const musicController = useMusicController()
@@ -17,21 +14,6 @@ const songListDetail = ref<Partial<SongListDetailResponse>>({})
 musicController.songList.getSongListDetail({ id, cookie: cookie.value }).then(response =>
   songListDetail.value = response,
 )
-
-const downloadStore = useDownloadStore()
-async function downloadAll() {
-  message.info(t('play-list-detail.item-action.start-download'))
-  await Promise.all(
-    (songListDetail.value.songs || []).map(async song =>
-      await downloadStore.addDownloadTask({
-        id: song.id,
-        name: song.name,
-        belongTo: songListDetail.value?.name || '未知歌单',
-      }),
-    ),
-  )
-  await downloadStore.startAndCompressAll()
-}
 </script>
 
 <template>
@@ -58,7 +40,7 @@ async function downloadAll() {
           <button mt-4 bg-red-5 transition-all color-white scale="hover:105 active:95" p="x4 y2" rounded-md>
             {{ $t('play-list-detail.replace-current-play-list') }}
           </button>
-          <button mt-4 transition-all scale="hover:105 active:95" p="x4 y2" rounded-md class="bg-gray/20" @click="downloadAll">
+          <button mt-4 transition-all scale="hover:105 active:95" p="x4 y2" rounded-md class="bg-gray/20">
             {{ $t('play-list-detail.download-all') }}
           </button>
         </div>

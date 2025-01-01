@@ -15,6 +15,12 @@ export default defineThemeOverrides({
       },
     },
   },
+
+  Drawer: {
+    common: {
+      borderRadius: '0',
+    },
+  },
 }, {}, {
   Select: {
     peers: {
@@ -33,5 +39,17 @@ export default defineThemeOverrides({
     boxShadowError: 'none',
     boxShadowWarning: 'none',
     boxShadowInfo: 'none',
+  },
+
+  Dialog: {
+    common: {
+      modalColor: 'rgb(50 44 44)',
+    },
+  },
+
+  Drawer: {
+    common: {
+      modalColor: 'rgb(50 44 44 / 75%)',
+    },
   },
 })

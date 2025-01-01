@@ -12,6 +12,10 @@ defineProps<{
       <div>{{ task.name }}</div>
       <div>{{ $t(`my.download-status.${task.status}`) }}</div>
     </div>
-    <NProgress :percentage="Number(task.percentage.toFixed(2))" />
+    <NProgress
+      :percentage="Number(task.percentage.toFixed(2))"
+      :status="task.status === 'failed' ? 'error' : 'default'"
+      :show-indicator="task.status !== 'failed' && task.status !== 'finished'"
+    />
   </div>
 </template>
