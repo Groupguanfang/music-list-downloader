@@ -4,6 +4,8 @@
 
 求求🥺各位大佬动动小手点一下右上角的star谢谢喵🙏这种项目注定不能大规模推广的，所以请点个star支持一下，谢谢🙏
 
+目前已经部署到了 Netlify: [https://music-list-downloader.netlify.app](https://music-list-downloader.netlify.app/)
+
 ## Setup
 
 Make sure to install dependencies:
