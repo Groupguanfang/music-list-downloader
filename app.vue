@@ -9,4 +9,5 @@
 
 <script setup lang="ts">
 import { zhCN, dateZhCN, darkTheme } from 'naive-ui'
+import './styles/global.css'
 </script>
