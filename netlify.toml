@@ -1,0 +1,10 @@
+[build]
+  command = "pnpm build"
+  publish = ".output/public"
+
+[[plugins]]
+  package = "@netlify/plugin-nuxt"
+
+[build.environment]
+  NODE_VERSION = "18"
+
