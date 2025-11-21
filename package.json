@@ -27,5 +27,8 @@
   },
   "devDependencies": {
     "unocss": "^66.5.9"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
