@@ -48,7 +48,6 @@
             <NInputNumber
               v-model:value="concurrentDownloads"
               :min="1"
-              :max="20"
               :disabled="isDownloading"
               class="w-full"
             />
@@ -108,13 +107,109 @@
         </NSpace>
       </NCard>
     </NSpace>
+
+    <!-- 下载进度弹窗 -->
+    <NModal
+      v-model:show="showDownloadModal"
+      :mask-closable="false"
+      :close-on-esc="false"
+      preset="card"
+      title="下载进度"
+      style="width: 600px; max-width: 90vw;"
+      :closable="false"
+    >
+      <NSpace vertical :size="16">
+        <!-- 总体进度 -->
+        <div>
+          <div class="flex justify-between mb-2">
+            <span class="text-sm">{{ downloadStatus }}</span>
+            <span class="text-sm font-semibold">{{ completedSongs }} / {{ totalSongs }}</span>
+          </div>
+          <NProgress
+            type="line"
+            :percentage="progressPercentage"
+            :show-indicator="true"
+          />
+        </div>
+
+        <!-- 统计信息 -->
+        <div class="flex gap-4 text-sm">
+          <div>
+            <span>成功: </span>
+            <span class="text-green-600 font-semibold">{{ successSongs.length }}</span>
+          </div>
+          <div>
+            <span>失败: </span>
+            <span class="text-red-600 font-semibold">{{ failedSongs.length }}</span>
+          </div>
+          <div>
+            <span>进行中: </span>
+            <span class="text-blue-600 font-semibold">
+              {{ downloadStatusList.filter(s => s.status === 'downloading').length }}
+            </span>
+          </div>
+        </div>
+
+        <!-- 下载列表 -->
+        <div class="max-h-96 overflow-y-auto overflow-x-hidden">
+          <NList>
+            <NListItem v-for="(item, index) in downloadStatusList" :key="index">
+              <div class="flex items-center justify-between w-full">
+                <div class="flex-1 min-w-0">
+                  <div class="font-medium truncate">
+                    {{ item.song.name }}
+                  </div>
+                  <div class="text-xs opacity-70 truncate">
+                    {{ item.song.ar?.map(a => a.name).join(', ') || '未知艺术家' }}
+                  </div>
+                </div>
+                <div class="ml-4 flex items-center gap-2">
+                  <svg
+                    v-if="item.status === 'success'"
+                    class="w-5 h-5 text-green-600"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                  </svg>
+                  <svg
+                    v-else-if="item.status === 'failed'"
+                    class="w-5 h-5 text-red-600"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                  </svg>
+                  <NSpin v-else-if="item.status === 'downloading'" size="small" />
+                  <span v-else class="opacity-60 text-xs">等待中</span>
+                </div>
+              </div>
+              <div v-if="item.status === 'failed' && item.error" class="mt-1 text-xs text-red-500">
+                错误: {{ item.error }}
+              </div>
+            </NListItem>
+          </NList>
+        </div>
+
+        <!-- 操作按钮 -->
+        <div class="flex justify-end gap-2">
+          <NButton
+            v-if="!isDownloading"
+            type="primary"
+            @click="showDownloadModal = false"
+          >
+            关闭
+          </NButton>
+        </div>
+      </NSpace>
+    </NModal>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import JSZip from 'jszip'
-import { useMessage } from 'naive-ui'
+import { useMessage, NModal, NList, NListItem, NSpin } from 'naive-ui'
 import { useStorage, useCounter, useTimeoutFn } from '@vueuse/core'
 
 // 设置页面标题
@@ -138,6 +233,21 @@ const { count: totalSongs, set: setTotalSongs } = useCounter(0)
 const isDownloading = ref(false)
 const downloadProgress = ref(0)
 const downloadStatus = ref('')
+
+// 弹窗状态
+const showDownloadModal = ref(false)
+
+// 下载详情
+interface SongDownloadStatus {
+  song: Song
+  status: 'pending' | 'downloading' | 'success' | 'failed'
+  error?: string
+  fileName?: string
+}
+
+const downloadStatusList = ref<SongDownloadStatus[]>([])
+const successSongs = computed(() => downloadStatusList.value.filter(s => s.status === 'success'))
+const failedSongs = computed(() => downloadStatusList.value.filter(s => s.status === 'failed'))
 
 // 计算属性
 const progressPercentage = computed(() => Math.round((completedSongs.value / totalSongs.value) * 100) || 0)
@@ -236,6 +346,15 @@ const downloadPlaylist = async () => {
     setCompletedSongs(0)
     downloadStatus.value = `找到 ${songs.length} 首歌曲，开始并发下载（并发数: ${concurrentDownloads.value}）...`
 
+    // 初始化下载状态列表
+    downloadStatusList.value = songs.map(song => ({
+      song,
+      status: 'pending' as const
+    }))
+    
+    // 显示弹窗
+    showDownloadModal.value = true
+
     // 2. 创建JSZip实例
     const zip = new JSZip()
 
@@ -249,6 +368,12 @@ const downloadPlaylist = async () => {
       songs,
       concurrentDownloads.value,
       async (song: Song, index: number) => {
+        // 更新状态为下载中
+        const statusItem = downloadStatusList.value.find(s => s.song.id === song.id)
+        if (statusItem) {
+          statusItem.status = 'downloading'
+        }
+        
         try {
           // 获取歌曲下载URL
           const urlData = await $fetch<{ url: string }>('/api/download-single', {
@@ -274,6 +399,12 @@ const downloadPlaylist = async () => {
           const artistName = song.ar?.map((a: { name: string }) => a.name).join(', ') || '未知艺术家'
           const fileName = `${sanitizeFileName(song.name)} - ${sanitizeFileName(artistName)}.mp3`
           
+          // 更新状态为成功
+          if (statusItem) {
+            statusItem.status = 'success'
+            statusItem.fileName = fileName
+          }
+          
           return {
             fileName,
             blob: audioBlob,
@@ -281,6 +412,11 @@ const downloadPlaylist = async () => {
           } as DownloadedSong & { songName: string }
         } catch (error) {
           console.error(`下载歌曲 ${song.name} 时出错:`, error)
+          // 更新状态为失败
+          if (statusItem) {
+            statusItem.status = 'failed'
+            statusItem.error = error instanceof Error ? error.message : String(error)
+          }
           return null as any // 返回null表示下载失败
         }
       },

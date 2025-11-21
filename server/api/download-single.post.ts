@@ -1,7 +1,4 @@
-import * as api from '@neteasecloudmusicapienhanced/api'
-
-// @ts-expect-error
-const netease = api.default as unknown as typeof import('@neteasecloudmusicapienhanced/api')
+const API_BASE_URL = 'https://server.xhhzs.cn'
 
 export default defineEventHandler(async (event) => {
   // 设置 CORS 头
@@ -17,8 +14,6 @@ export default defineEventHandler(async (event) => {
   try {
     const body = await readBody(event).catch(() => ({}))
     
-    console.log('Download single request body:', body)
-    
     if (!body || !body.id) {
       throw createError({
         statusCode: 400,
@@ -27,19 +22,46 @@ export default defineEventHandler(async (event) => {
       })
     }
 
-    const response = await netease.song_url_v1({
-      id: body.id,
-      level: 'exhigh' as api.SoundQualityType,
-      cookie: body.cookie ?? getHeader(event, 'cookie') ?? '',
+    // 构建查询参数
+    const params = new URLSearchParams({
+      id: String(body.id),
+      level: 'exhigh', // 高品质
     })
+
+    // 请求网易云 API 服务
+    const apiUrl = `${API_BASE_URL}/song/url/v1?${params.toString()}`
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+    }
+
+    // 如果有 cookie，添加到请求头
+    const cookie = body.cookie ?? getHeader(event, 'cookie') ?? ''
+    if (cookie) {
+      headers['Cookie'] = cookie
+    }
+
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+      headers,
+    })
+
+    if (!response.ok) {
+      throw createError({
+        statusCode: response.status,
+        statusMessage: `API request failed: ${response.statusText}`
+      })
+    }
+
+    const data = await response.json()
     
-    // @ts-expect-error
-    const url = response.body?.data?.[0]?.url
+    // 解析响应数据
+    const url = data?.data?.[0]?.url || data?.url
     
     if (!url) {
       throw createError({
         statusCode: 404,
-        statusMessage: 'Song URL not found'
+        statusMessage: 'Song URL not found',
+        data: { response: data }
       })
     }
 
