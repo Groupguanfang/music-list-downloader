@@ -1,6 +1,8 @@
-# Nuxt Minimal Starter
+# 网易云音乐下崽器
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+因为不满网上那堆网易云音乐解析器，烂的要命，所以自己写了一个，主要是把歌单给下到我爸车上，方便他听歌。
+
+求求🥺各位大佬动动小手点一下右上角的star谢谢喵🙏这种项目注定不能大规模推广的，所以请点个star支持一下，谢谢🙏
 
 ## Setup
 
