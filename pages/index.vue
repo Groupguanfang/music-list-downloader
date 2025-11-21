@@ -117,6 +117,11 @@ import JSZip from 'jszip'
 import { useMessage } from 'naive-ui'
 import { useStorage, useCounter, useTimeoutFn } from '@vueuse/core'
 
+// 设置页面标题
+useHead({
+  title: 'Music List Downloader'
+})
+
 const message = useMessage()
 
 // 使用 useStorage 持久化 cookie
