@@ -1,5 +1,5 @@
 <template>
-  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN">
+  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme="darkTheme">
     <NMessageProvider>
       <NuxtRouteAnnouncer />
       <NuxtPage />
@@ -8,5 +8,5 @@
 </template>
 
 <script setup lang="ts">
-import { zhCN, dateZhCN } from 'naive-ui'
+import { zhCN, dateZhCN, darkTheme } from 'naive-ui'
 </script>
