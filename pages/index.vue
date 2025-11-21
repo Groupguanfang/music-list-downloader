@@ -112,7 +112,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import JSZip from 'jszip'
 import { useMessage } from 'naive-ui'
 import { useStorage, useCounter, useTimeoutFn } from '@vueuse/core'
@@ -124,7 +124,7 @@ useHead({
 
 const message = useMessage()
 
-// 使用 useStorage 持久化 cookie
+// 使用 useStorage 持久化 cookie 和配置
 const cookie = useStorage('music-downloader-cookie', '')
 const playlistId = useStorage('music-downloader-playlist-id', '')
 const songId = useStorage('music-downloader-song-id', '')
@@ -134,9 +134,10 @@ const concurrentDownloads = useStorage('music-downloader-concurrent', 5)
 const { count: completedSongs, set: setCompletedSongs, inc: incCompletedSongs } = useCounter(0)
 const { count: totalSongs, set: setTotalSongs } = useCounter(0)
 
-const isDownloading = useStorage('music-downloader-is-downloading', false)
-const downloadProgress = useStorage('music-downloader-progress', 0)
-const downloadStatus = useStorage('music-downloader-status', '')
+// 下载状态不持久化，每次刷新重置
+const isDownloading = ref(false)
+const downloadProgress = ref(0)
+const downloadStatus = ref('')
 
 // 计算属性
 const progressPercentage = computed(() => Math.round((completedSongs.value / totalSongs.value) * 100) || 0)
