@@ -1,0 +1,31 @@
+{
+  "name": "v3",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@bg-dev/nuxt-naiveui": "^2.0.0",
+    "@neteasecloudmusicapienhanced/api": "^4.29.17",
+    "@netlify/nuxt": "0.2.13",
+    "@unocss/nuxt": "66.5.9",
+    "@vueuse/core": "^14.0.0",
+    "@vueuse/nuxt": "14.0.0",
+    "jszip": "^3.10.1",
+    "naive-ui": "^2.43.2",
+    "nuxt": "^4.2.1",
+    "nuxtjs-naive-ui": "1.0.2",
+    "unplugin-auto-import": "^20.2.0",
+    "unplugin-vue-components": "^30.0.0",
+    "vue": "^3.5.24",
+    "vue-router": "^4.6.3"
+  },
+  "devDependencies": {
+    "unocss": "^66.5.9"
+  }
+}
