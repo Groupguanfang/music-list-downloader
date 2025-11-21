@@ -262,8 +262,8 @@ const downloadPlaylist = async () => {
             throw new Error(`无法获取下载链接`)
           }
 
-          // 下载歌曲文件
-          const audioResponse = await fetch(urlData.url)
+          // 通过服务器代理下载歌曲文件（解决跨域问题）
+          const audioResponse = await fetch(`/api/proxy-audio?url=${encodeURIComponent(urlData.url)}`)
           if (!audioResponse.ok) {
             throw new Error(`HTTP ${audioResponse.status}`)
           }
@@ -354,13 +354,20 @@ const downloadSong = async () => {
       },
     })
     if (data.url) {
-      // 直接下载
+      // 通过服务器代理下载（解决跨域问题）
+      const audioResponse = await fetch(`/api/proxy-audio?url=${encodeURIComponent(data.url)}`)
+      if (!audioResponse.ok) {
+        throw new Error(`HTTP ${audioResponse.status}`)
+      }
+      const audioBlob = await audioResponse.blob()
+      const url = URL.createObjectURL(audioBlob)
       const a = document.createElement('a')
-      a.href = data.url
+      a.href = url
       a.download = 'song.mp3'
       document.body.appendChild(a)
       a.click()
       document.body.removeChild(a)
+      URL.revokeObjectURL(url)
       message.success('开始下载单曲')
     } else {
       message.error('无法获取下载链接')
