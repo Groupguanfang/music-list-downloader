@@ -219,6 +219,9 @@ useHead({
 
 const message = useMessage()
 
+// API 基础地址
+const API_BASE_URL = 'https://server.xhhzs.cn'
+
 // 使用 useStorage 持久化 cookie 和配置
 const cookie = useStorage('music-downloader-cookie', '')
 const playlistId = useStorage('music-downloader-playlist-id', '')
@@ -325,17 +328,25 @@ const downloadPlaylist = async () => {
     downloadStatus.value = '正在获取歌单信息...'
     setCompletedSongs(0)
 
-    // 1. 获取所有歌曲
-    const trackResponse = await $fetch<any>('/api/track-all', {
-      method: 'POST',
-      body: {
-        id: playlistId.value,
-        cookie: cookie.value,
+    // 1. 获取所有歌曲 - 直接请求 server.xhhzs.cn
+    const params = new URLSearchParams({
+      id: String(playlistId.value),
+    })
+    const trackResponse = await fetch(`${API_BASE_URL}/playlist/track/all?${params.toString()}`, {
+      method: 'GET',
+      headers: {
+        'Cookie': cookie.value,
       },
     })
     
+    if (!trackResponse.ok) {
+      throw new Error(`获取歌单失败: ${trackResponse.statusText}`)
+    }
+    
+    const trackData = await trackResponse.json()
+    
     // 解析歌曲列表
-    const songs: Song[] = trackResponse.songs || trackResponse.data?.songs || []
+    const songs: Song[] = trackData.songs || trackData.data?.songs || []
     if (songs.length === 0) {
       message.warning('歌单中没有歌曲')
       isDownloading.value = false
@@ -375,21 +386,31 @@ const downloadPlaylist = async () => {
         }
         
         try {
-          // 获取歌曲下载URL
-          const urlData = await $fetch<{ url: string }>('/api/download-single', {
-            method: 'POST',
-            body: {
-              id: song.id,
-              cookie: cookie.value,
+          // 获取歌曲下载URL - 直接请求 server.xhhzs.cn
+          const urlParams = new URLSearchParams({
+            id: String(song.id),
+            level: 'exhigh',
+          })
+          const urlResponse = await fetch(`${API_BASE_URL}/song/url/v1?${urlParams.toString()}`, {
+            method: 'GET',
+            headers: {
+              'Cookie': cookie.value,
             },
           })
           
-          if (!urlData.url) {
+          if (!urlResponse.ok) {
+            throw new Error(`获取下载链接失败: ${urlResponse.statusText}`)
+          }
+          
+          const urlData = await urlResponse.json()
+          const audioUrl = urlData?.data?.[0]?.url || urlData?.url
+          
+          if (!audioUrl) {
             throw new Error(`无法获取下载链接`)
           }
 
-          // 通过服务器代理下载歌曲文件（解决跨域问题）
-          const audioResponse = await fetch(`/api/proxy-audio?url=${encodeURIComponent(urlData.url)}`)
+          // 直接下载歌曲文件（server.xhhzs.cn 已处理跨域）
+          const audioResponse = await fetch(audioUrl)
           if (!audioResponse.ok) {
             throw new Error(`HTTP ${audioResponse.status}`)
           }
@@ -483,28 +504,33 @@ const downloadSong = async () => {
     return
   }
   try {
-    const data = await $fetch<{ url: string }>('/api/download-single', {
-      method: 'POST',
-      body: {
-        id: songId.value,
-        cookie: cookie.value,
+    // 直接请求 server.xhhzs.cn
+    const params = new URLSearchParams({
+      id: String(songId.value),
+      level: 'exhigh',
+    })
+    const response = await fetch(`${API_BASE_URL}/song/url/v1?${params.toString()}`, {
+      method: 'GET',
+      headers: {
+        'Cookie': cookie.value,
       },
     })
-    if (data.url) {
-      // 通过服务器代理下载（解决跨域问题）
-      const audioResponse = await fetch(`/api/proxy-audio?url=${encodeURIComponent(data.url)}`)
-      if (!audioResponse.ok) {
-        throw new Error(`HTTP ${audioResponse.status}`)
-      }
-      const audioBlob = await audioResponse.blob()
-      const url = URL.createObjectURL(audioBlob)
+    
+    if (!response.ok) {
+      throw new Error(`获取下载链接失败: ${response.statusText}`)
+    }
+    
+    const data = await response.json()
+    const audioUrl = data?.data?.[0]?.url || data?.url
+    
+    if (audioUrl) {
+      // 直接下载（server.xhhzs.cn 已处理跨域）
       const a = document.createElement('a')
-      a.href = url
+      a.href = audioUrl
       a.download = 'song.mp3'
       document.body.appendChild(a)
       a.click()
       document.body.removeChild(a)
-      URL.revokeObjectURL(url)
       message.success('开始下载单曲')
     } else {
       message.error('无法获取下载链接')
