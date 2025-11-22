@@ -405,12 +405,12 @@ const downloadPlaylist = async () => {
           const urlData = await urlResponse.json()
           const audioUrl = urlData?.data?.[0]?.url || urlData?.url
           
-          if (!audioUrl) {
+          if (!audioUrl || typeof audioUrl !== 'string' || audioUrl.length === 0) {
             throw new Error(`无法获取下载链接`)
           }
 
           // 直接下载歌曲文件（server.xhhzs.cn 已处理跨域）
-          const audioResponse = await fetch(audioUrl)
+          const audioResponse = await fetch(audioUrl.replace('http://', 'https://'))
           if (!audioResponse.ok) {
             throw new Error(`HTTP ${audioResponse.status}`)
           }
